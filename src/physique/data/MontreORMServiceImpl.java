@@ -5,6 +5,8 @@
 package physique.data;
 
 import java.util.List;
+import javax.persistence.Query;
+import metier.Client;
 import metier.Montre;
 
 /**
@@ -43,7 +45,12 @@ class MontreORMServiceImpl implements MontreORMService {
 
     @Override
     public List<Montre> getByFabricant(String fabricant) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        ConnexionService.getPersistance();
+        Query query = ConnexionService.em.createNamedQuery("getMontreByFabricant");
+        query.setParameter("fabricant", fabricant);//
+        List<Montre> montre = query.getResultList();
+        ConnexionService.disconect();
+        return montre;
     }
     
 }
