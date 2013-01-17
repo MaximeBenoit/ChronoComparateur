@@ -59,7 +59,7 @@ class ClientORMServiceImpl implements ClientORMService {
     public List<Client>  getByNom(String nom) {
         ConnexionService.getPersistance();
         Query query = ConnexionService.em.createNamedQuery("getClientByNom");
-        query.setParameter("nom", nom);
+        query.setParameter("nom", nom);//
         List<Client> client = query.getResultList();
         ConnexionService.disconect();
         return client;
