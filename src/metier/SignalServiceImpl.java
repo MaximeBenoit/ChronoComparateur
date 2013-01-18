@@ -65,4 +65,13 @@ public class SignalServiceImpl implements SignalService {
             throw new Exception("getByDateAcquisition impossible : Paramètre null !");
         }
     }
+
+    @Override
+    public List<Signal> getByPositionMontre(PositionMontre positionMontre) throws Exception {
+        if (positionMontre != null) {
+            return signalSrv.getByPositionMontre(positionMontre);
+        } else {
+            throw new Exception("getByPositionMontre impossible : Paramètre null !");
+        }
+    }
 }

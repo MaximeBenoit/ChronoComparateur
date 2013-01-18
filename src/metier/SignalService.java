@@ -18,4 +18,5 @@ public interface SignalService {
     public List<Signal> getAll() throws Exception;
     public Signal getById(long id) throws Exception;
     public List<Signal> getByDateAcquisition(Date dateAcquisition) throws Exception;
+    public List<Signal> getByPositionMontre(PositionMontre positionMontre) throws Exception;
 }

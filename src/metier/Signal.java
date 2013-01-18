@@ -15,6 +15,33 @@ public class Signal {
     private long id;
     private Date dateAcquisition;
     private Operateur operateur;
+    private PositionMontre positionMontre;
+
+    public Signal(long id, Date dateAcquisition, Operateur operateur, PositionMontre positionMontre) {
+        this.id = id;
+        this.dateAcquisition = dateAcquisition;
+        this.operateur = operateur;
+        this.positionMontre = positionMontre;
+    }
+    
+
+    /**
+     * Get the value of positionMontre
+     *
+     * @return the value of positionMontre
+     */
+    public PositionMontre getPositionMontre() {
+        return positionMontre;
+    }
+
+    /**
+     * Set the value of positionMontre
+     *
+     * @param positionMontre new value of positionMontre
+     */
+    public void setPositionMontre(PositionMontre positionMontre) {
+        this.positionMontre = positionMontre;
+    }
 
     /**
      * Get the value of operateur

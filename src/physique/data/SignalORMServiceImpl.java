@@ -6,6 +6,7 @@ package physique.data;
 
 import java.util.Date;
 import java.util.List;
+import metier.PositionMontre;
 import metier.Signal;
 
 /**
@@ -47,6 +48,8 @@ class SignalORMServiceImpl implements SignalORMService {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    
-    
+    @Override
+    public List<Signal> getByPositionMontre(PositionMontre positionMontre) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }   
 }
