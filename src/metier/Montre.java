@@ -18,10 +18,7 @@ public class Montre {
     private List<Signal> signal;
 
     
-    public Montre(long id, String fabricant, Client proprietaire) {
-        this.id = id;
-        this.fabricant = fabricant;
-        this.proprietaire = proprietaire;
+    public Montre() {
     }
     
 /**

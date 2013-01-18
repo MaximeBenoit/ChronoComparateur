@@ -14,10 +14,7 @@ public class Propriete {
     private double decalage;
     private int angleBalancier;
 
-    public Propriete(double pointMort, double decalage, int angleBalancier) {
-        this.pointMort = pointMort;
-        this.decalage = decalage;
-        this.angleBalancier = angleBalancier;
+    public Propriete() {
     }
 
     /**

@@ -17,10 +17,7 @@ public class Rapport {
     private Montre montre;
 
     
-    public Rapport(long id, Montre montre) {
-        this.id = id;
-        this.dateUpdate = new Date();
-        this.montre = montre;
+    public Rapport() {
     }
 
     /**

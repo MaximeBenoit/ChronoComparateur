@@ -16,10 +16,7 @@ public class Mesure {
     private Propriete propriete;
 
 
-    public Mesure(double periodeIdeale, double tempsTACaTIC, String tempsTICaTAC) {
-        this.periodeIdeale = periodeIdeale;
-        this.tempsTACaTIC = tempsTACaTIC;
-        this.tempsTICaTAC = tempsTICaTAC;
+    public Mesure() {
     }
     /**
      * Get the value of propriete

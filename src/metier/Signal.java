@@ -11,19 +11,14 @@ import java.util.Date;
  * @author saturne
  */
 public class Signal {
-    
+
     private long id;
     private Date dateAcquisition;
     private Operateur operateur;
     private PositionMontre positionMontre;
 
-    public Signal(long id, Date dateAcquisition, Operateur operateur, PositionMontre positionMontre) {
-        this.id = id;
-        this.dateAcquisition = dateAcquisition;
-        this.operateur = operateur;
-        this.positionMontre = positionMontre;
+    public Signal() {
     }
-    
 
     /**
      * Get the value of positionMontre
@@ -61,7 +56,6 @@ public class Signal {
         this.operateur = operateur;
     }
 
-
     /**
      * Get the value of dateAcquisition
      *
@@ -79,7 +73,6 @@ public class Signal {
     public void setDateAcquisition(Date dateAcquisition) {
         this.dateAcquisition = dateAcquisition;
     }
-
 
     /**
      * Get the value of id

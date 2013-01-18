@@ -14,10 +14,7 @@ public class Client {
     private String nom;
     private String prenom;
 
-    public Client(long id, String nom, String prenom) {
-        this.id = id;
-        this.nom = nom;
-        this.prenom = prenom;
+    public Client() {
     }
 
     /**
