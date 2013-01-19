@@ -4,15 +4,36 @@
  */
 package metier;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  *
  * @author saturne
  */
-public class Client {
-    
-    private long id;
+@Entity
+public class Client implements Serializable{
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * @return the serialVersionUID
+     */
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String nom;
     private String prenom;
+  
+    
+//    private long id;
+//    private String nom;
+//    private String prenom;
 
     public Client() {
     }
@@ -99,6 +120,6 @@ public class Client {
     
     @Override
     public String toString() {
-        return ("Id : " + this.id + ", nom : " + this.nom + ", prenom : " + this.prenom);
+              return ("Id : " + this.id + ", nom : " + this.nom + ", prenom : " + this.prenom);
     }
 }

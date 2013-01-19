@@ -21,7 +21,7 @@ public class ConnexionService {
 
     protected static void getPersistance() {
         try {
-            emf = Persistence.createEntityManagerFactory("test");
+            emf = Persistence.createEntityManagerFactory("ChronoCompPU");
             em = emf.createEntityManager();
             tx = em.getTransaction();
             tx.begin();
