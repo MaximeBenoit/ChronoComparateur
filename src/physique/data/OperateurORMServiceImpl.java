@@ -5,6 +5,7 @@
 package physique.data;
 
 import java.util.List;
+import javax.persistence.Query;
 import metier.Operateur;
 
 /**
@@ -18,42 +19,72 @@ class OperateurORMServiceImpl implements OperateurORMService {
 
     @Override
     public void addOperateur(Operateur operateur) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        ConnexionService.getPersistance();
+        ConnexionService.em.persist(operateur);
+        ConnexionService.disconect();
     }
 
     @Override
     public void removeOperateur(Operateur operateur) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        ConnexionService.getPersistance();
+        ConnexionService.em.remove(ConnexionService.em.merge(operateur));
+        ConnexionService.disconect();
     }
 
     @Override
     public void updateOperateur(Operateur operateur) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        ConnexionService.getPersistance();
+        ConnexionService.em.merge(operateur);
+        ConnexionService.disconect();
     }
 
     @Override
     public List<Operateur> getAll() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+        ConnexionService.getPersistance();//Connexion BDD
+        Query query = ConnexionService.em.createNamedQuery("operateurGetAll");//Envoi requete
+        List<Operateur> operateurs = query.getResultList();//Recuperation list
+        ConnexionService.disconect();//Déconexion
+        return operateurs;
+
+
+
     }
 
     @Override
     public Operateur getById(long id) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        ConnexionService.getPersistance();
+        Operateur operateur = ConnexionService.em.find(Operateur.class, id);
+        ConnexionService.disconect();
+        return operateur;
     }
 
     @Override
     public List<Operateur> getByNom(String nom) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        ConnexionService.getPersistance();
+        Query query = ConnexionService.em.createNamedQuery("operateurGetByNom");
+        query.setParameter("nom", nom);//Parametre de la requete (recuperer colone Nom);
+        List<Operateur> operateurs = query.getResultList();
+        ConnexionService.disconect();
+        return operateurs;
+
+
     }
 
     @Override
     public List<Operateur> getByPrenom(String prenom) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        ConnexionService.getPersistance();
+        Query query = ConnexionService.em.createNamedQuery("getByPrenom");
+        query.setParameter("prenom", prenom);
+        List<Operateur> operateurs = query.getResultList();
+        ConnexionService.disconect();
+        return operateurs;
     }
 
     @Override
     public Operateur getByLogin(String login) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        ConnexionService.getPersistance();
+        Operateur operateur = ConnexionService.em.find(Operateur.class, login);
+        ConnexionService.disconect();
+        return operateur;
     }
-    
 }
