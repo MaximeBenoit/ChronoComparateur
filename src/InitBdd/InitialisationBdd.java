@@ -4,6 +4,8 @@
  */
 package InitBdd;
 
+import java.util.Date;
+import java.util.List;
 import metier.*;
 
 /**
@@ -22,7 +24,7 @@ public class InitialisationBdd {
     private SignalService signalSrv = MetierFactory.getSignalServ();
 
     public InitialisationBdd() throws Exception {
-        
+
         Client client = new Client();
         client.setNom("Benoit");
         client.setPrenom("Maxime");
@@ -36,24 +38,22 @@ public class InitialisationBdd {
         operateur.setPrenom("Maxime");
         operateurSrv.addOperateur(operateur);
 
-//        Montre montre = new Montre();
-//        montre.setFabricant("Rolex");
-//        montre.setProprietaire(client);
-//        montre.setSignal(null);
-//        montreSrv.addMontre(montre);
-//
-//        Rapport rapport = new Rapport();
-//        rapport.setDateUpdate(null);
-//        rapport.setMontre(montre);
-//        rapportSrv.addRapport(rapport);
-//
-//        Signal signal = new Signal();
-//        signal.setDateAcquisition(null);
-//        signal.setPositionMontre(PositionMontre.fondH);
-//        signal.setOperateur(operateur);
-//        signalSrv.addSignal(signal);
+        Signal signal = new Signal();
+        signal.setDateAcquisition(new Date());
+        signal.setPositionMontre(PositionMontre.fondH);
+        signal.setOperateur(operateur);
+        signalSrv.addSignal(signal);
 
+        Montre montre = new Montre();
+        montre.setFabricant("Rolex");
+        montre.setProprietaire(client);
+        montre.setSignal(null);
+        montreSrv.addMontre(montre);
 
+        Rapport rapport = new Rapport();
+        rapport.setDateUpdate(new Date());
+        rapport.setMontre(montre);
+        rapportSrv.addRapport(rapport);
 
     }
 }
