@@ -18,7 +18,9 @@ class MesureServiceImpl implements MesureService {
 
     @Override
     public Mesure getMesure(Signal signal) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        ConnexionService.getPersistance();
+        Mesure mesure = ConnexionService.em.find(Mesure.class, signal);
+        ConnexionService.disconect();
+        return mesure;
     }
-    
 }

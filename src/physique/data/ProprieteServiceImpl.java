@@ -18,7 +18,9 @@ class ProprieteServiceImpl implements ProprieteService {
 
     @Override
     public Propriete getPropriete(Mesure mesure) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        ConnexionService.getPersistance();
+        Propriete propriete = ConnexionService.em.find(Propriete.class, mesure);
+        ConnexionService.disconect();
+        return propriete;
     }
-    
 }

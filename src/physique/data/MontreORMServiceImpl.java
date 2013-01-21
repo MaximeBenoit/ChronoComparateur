@@ -20,27 +20,40 @@ class MontreORMServiceImpl implements MontreORMService {
 
     @Override
     public void addMontre(Montre montre) {
-        throw new UnsupportedOperationException("Not supported yet.");
+         ConnexionService.getPersistance();
+        ConnexionService.em.persist(montre);
+        ConnexionService.disconect();
     }
 
     @Override
     public void removeMontre(Montre montre) {
-        throw new UnsupportedOperationException("Not supported yet.");
+         ConnexionService.getPersistance();
+        ConnexionService.em.remove(ConnexionService.em.merge(montre));
+        ConnexionService.disconect();
     }
 
     @Override
     public void updateMontre(Montre montre) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        ConnexionService.getPersistance();
+        ConnexionService.em.merge(montre);
+        ConnexionService.disconect();
     }
 
     @Override
     public List<Montre> getAll() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+        ConnexionService.getPersistance();
+        Query query = ConnexionService.em.createNamedQuery("montretGetAll");
+        List<Montre> montres = query.getResultList();
+       ConnexionService.disconect();
+        return montres;
     }
 
     @Override
     public Montre getById(long id) {
-        throw new UnsupportedOperationException("Not supported yet.");
+         ConnexionService.getPersistance();
+        Montre montre = ConnexionService.em.find(Montre.class, id);
+        ConnexionService.disconect();
+        return montre;
     }
 
     @Override
