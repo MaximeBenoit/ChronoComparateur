@@ -83,8 +83,10 @@ class OperateurORMServiceImpl implements OperateurORMService {
     @Override
     public Operateur getByLogin(String login) {
         ConnexionService.getPersistance();
-        Operateur operateur = ConnexionService.em.find(Operateur.class, login);
+        Query query = ConnexionService.em.createNamedQuery("getByLogin");
+        query.setParameter("login", login);
+        Operateur operateurs = (Operateur) query.getSingleResult();
         ConnexionService.disconect();
-        return operateur;
+        return operateurs;
     }
 }

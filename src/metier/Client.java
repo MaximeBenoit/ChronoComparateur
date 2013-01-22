@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 /**
@@ -16,7 +17,11 @@ import javax.persistence.NamedQuery;
  * @author saturne
  */
 @Entity
-@NamedQuery(name="clientGetAll",query="SELECT a FROM Client a")
+@NamedQueries({
+@NamedQuery(name="clientGetAll",query="SELECT p FROM Client p"),
+@NamedQuery(name="getClientByNom",query="SELECT p FROM Client p WHERE p.nom = :nom"),
+@NamedQuery(name="getClientByPrenom",query="SELECT p FROM Client p WHERE p.prenom = :prenom"),
+})
 public class Client implements Serializable{
     private static final long serialVersionUID = 1L;
 

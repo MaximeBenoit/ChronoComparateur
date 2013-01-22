@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 /**
@@ -16,7 +17,14 @@ import javax.persistence.NamedQuery;
  * @author saturne
  */
 @Entity
-@NamedQuery(name="operateurGetAll",query="SELECT a FROM Operateur a")
+
+@NamedQueries({
+@NamedQuery(name="operateurGetAll",query="SELECT o FROM Operateur o"),
+@NamedQuery(name="getOperateurByNom",query="SELECT o FROM Operateur o WHERE p.nom = :nom"),
+@NamedQuery(name="getOperateurByPrenom",query="SELECT o FROM Operateur o WHERE p.prenom = :prenom"),
+@NamedQuery(name="getByLogin",query="SELECT o FROM Operateur o WHERE p.login = :login")
+})
+
 public class Operateur implements Serializable{
     private static final long serialVersionUID = 1L;
 

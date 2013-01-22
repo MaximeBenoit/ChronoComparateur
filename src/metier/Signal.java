@@ -16,6 +16,7 @@ public class Signal {
     private Date dateAcquisition;
     private Operateur operateur;
     private PositionMontre positionMontre;
+    
 
     public Signal() {
     }
