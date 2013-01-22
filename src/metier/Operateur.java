@@ -17,15 +17,14 @@ import javax.persistence.NamedQuery;
  * @author saturne
  */
 @Entity
-
 @NamedQueries({
-@NamedQuery(name="operateurGetAll",query="SELECT o FROM Operateur o"),
-@NamedQuery(name="getOperateurByNom",query="SELECT o FROM Operateur o WHERE p.nom = :nom"),
-@NamedQuery(name="getOperateurByPrenom",query="SELECT o FROM Operateur o WHERE p.prenom = :prenom"),
-@NamedQuery(name="getByLogin",query="SELECT o FROM Operateur o WHERE p.login = :login")
+    @NamedQuery(name = "operateurGetAll", query = "SELECT o FROM Operateur o"),
+    @NamedQuery(name = "getOperateurByNom", query = "SELECT o FROM Operateur o WHERE o.nom = :nom"),
+    @NamedQuery(name = "getOperateurByPrenom", query = "SELECT o FROM Operateur o WHERE o.prenom = :prenom"),
+    @NamedQuery(name = "getByLogin", query = "SELECT o FROM Operateur o WHERE o.login = :login")
 })
+public class Operateur implements Serializable {
 
-public class Operateur implements Serializable{
     private static final long serialVersionUID = 1L;
 
     /**
@@ -34,8 +33,6 @@ public class Operateur implements Serializable{
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
-    
-    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -63,7 +60,6 @@ public class Operateur implements Serializable{
         this.isAdmin = isAdmin;
     }
 
-
     /**
      * Get the value of mdp
      *
@@ -81,7 +77,6 @@ public class Operateur implements Serializable{
     public void setMdp(String mdp) {
         this.mdp = mdp;
     }
-
 
     /**
      * Get the value of login
@@ -101,7 +96,6 @@ public class Operateur implements Serializable{
         this.login = login;
     }
 
-
     /**
      * Get the value of prenom
      *
@@ -120,7 +114,6 @@ public class Operateur implements Serializable{
         this.prenom = prenom;
     }
 
-
     /**
      * Get the value of nom
      *
@@ -138,7 +131,6 @@ public class Operateur implements Serializable{
     public void setNom(String nom) {
         this.nom = nom;
     }
-
 
     /**
      * Get the value of id
@@ -187,6 +179,6 @@ public class Operateur implements Serializable{
 
     @Override
     public String toString() {
-       return ("Id : " + this.id + ", nom : " + this.nom + ", prenom : " + this.prenom + ", login" + this.login + ", mdp : " + this.mdp + ", isAdmin : " + this.isAdmin); 
+        return ("Id : " + this.id + ", nom : " + this.nom + ", prenom : " + this.prenom + ", login" + this.login + ", mdp : " + this.mdp + ", isAdmin : " + this.isAdmin);
     }
 }
