@@ -19,13 +19,13 @@ public class Chronocomp {
      */
     public static void main(String[] args) throws Exception {
 
-//      InitialisationBdd initialisationBdd = new InitialisationBdd();
-        OperateurService d = MetierFactory.getOperateurServ();
-        if (d.getByLogin("maximebenoit") != null) {
-          System.out.println("test");
-        } else {
-          
-        }
+     InitialisationBdd initialisationBdd = new InitialisationBdd();
+//        OperateurService d = MetierFactory.getOperateurServ();
+//        if (d.getByLogin("maximebenoit") != null) {
+//          System.out.println("test");
+//        } else {
+//          
+//        }
         
     }
 }

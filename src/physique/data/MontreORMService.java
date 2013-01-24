@@ -5,6 +5,7 @@
 package physique.data;
 
 import java.util.List;
+import metier.Client;
 import metier.Montre;
 
 /**
@@ -24,4 +25,6 @@ public interface MontreORMService {
     public Montre getById(long id) throws Exception;
 
     public List<Montre> getByFabricant(String fabricant) throws Exception;
+    
+    public List<Montre> getByProprietaire(Client proprietaire) throws Exception;
 }

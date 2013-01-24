@@ -18,9 +18,9 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQueries({
-@NamedQuery(name="clientGetAll",query="SELECT p FROM Client p"),
-@NamedQuery(name="getClientByNom",query="SELECT p FROM Client p WHERE p.nom = :nom"),
-@NamedQuery(name="getClientByPrenom",query="SELECT p FROM Client p WHERE p.prenom = :prenom"),
+@NamedQuery(name="clientGetAll",query="SELECT c FROM Client c"),
+@NamedQuery(name="getClientByNom",query="SELECT c FROM Client c WHERE c.nom = :nom"),
+@NamedQuery(name="getClientByPrenom",query="SELECT c FROM Client c WHERE c.prenom = :prenom")
 })
 public class Client implements Serializable{
     private static final long serialVersionUID = 1L;

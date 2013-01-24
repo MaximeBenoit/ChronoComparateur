@@ -4,24 +4,49 @@
  */
 package metier;
 
+import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author saturne
  */
-public class Montre {
-    
+@Entity
+@NamedQueries({
+    @NamedQuery(name = "montreGetAll", query = "SELECT m FROM Montre m"),
+    @NamedQuery(name = "getMontreByFabricant", query = "SELECT m FROM Montre m WHERE m.fabricant = :fabricant")
+})
+public class Montre implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * @return the serialVersionUID
+     */
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String fabricant;
+    @ManyToOne
     private Client proprietaire;
+    @OneToMany
     private List<Signal> signal;
 
-    
     public Montre() {
     }
-    
-/**
+
+    /**
      * Get the value of signal
      *
      * @return the value of signal
@@ -38,7 +63,7 @@ public class Montre {
     public void setSignal(List<Signal> signal) {
         this.signal = signal;
     }
-    
+
     /**
      * Get the value of proprietaire
      *
@@ -57,7 +82,6 @@ public class Montre {
         this.proprietaire = proprietaire;
     }
 
-
     /**
      * Get the value of fabricant
      *
@@ -75,7 +99,6 @@ public class Montre {
     public void setFabricant(String fabricant) {
         this.fabricant = fabricant;
     }
-
 
     /**
      * Get the value of id
@@ -119,10 +142,9 @@ public class Montre {
         }
         return true;
     }
-    
+
     @Override
     public String toString() {
         return ("Id : " + this.id + ", fabricant : " + this.fabricant + ", proprietaire : " + this.proprietaire.toString());
     }
-
 }

@@ -4,16 +4,42 @@
  */
 package metier;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author saturne
  */
-public class Rapport {
-    
+@Entity
+@NamedQueries({
+    @NamedQuery(name = "rapportGetAll", query = "SELECT r FROM Rapport r"),
+    @NamedQuery(name = "rapportGetByDateUpdate", query = "SELECT r FROM Rapport r WHERE r.dateUpdate = :dateUpdate")
+})
+public class Rapport implements Serializable{
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * @return the serialVersionUID
+     */
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dateUpdate;
+    @ManyToOne
     private Montre montre;
 
     

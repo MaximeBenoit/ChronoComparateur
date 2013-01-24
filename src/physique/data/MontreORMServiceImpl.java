@@ -65,5 +65,15 @@ class MontreORMServiceImpl implements MontreORMService {
         ConnexionService.disconect();
         return montre;
     }
+
+    @Override
+    public List<Montre> getByProprietaire(Client proprietaire) throws Exception {
+         ConnexionService.getPersistance();
+        Query query = ConnexionService.em.createNamedQuery("getMontreByProprietaire");
+        query.setParameter("proprietaire", proprietaire);
+        List<Montre> montre = query.getResultList();
+        ConnexionService.disconect();
+        return montre;
+    }
     
 }
