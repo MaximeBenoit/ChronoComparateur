@@ -5,8 +5,6 @@
 package InitBdd;
 
 import metier.MetierFactory;
-import metier.Operateur;
-import metier.OperateurService;
 
 /**
  *
@@ -18,14 +16,21 @@ public class Chronocomp {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws Exception {
+        //if (MetierFactory.getClientServ().getAll() == null) {
+           
+                InitialisationBdd initialisationBdd = new InitialisationBdd();
+            //} else {
+           // System.out.println("Client dans la BDD");
+       // }
+            
 
-     InitialisationBdd initialisationBdd = new InitialisationBdd();
+        } 
+    }
+
 //        OperateurService d = MetierFactory.getOperateurServ();
 //        if (d.getByLogin("maximebenoit") != null) {
 //          System.out.println("test");
 //        } else {
 //          
 //        }
-        
-    }
-}
+
