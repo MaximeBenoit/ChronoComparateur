@@ -6,50 +6,50 @@ package metier;
 
 import java.util.Date;
 import java.util.List;
-import physique.data.SignalORMService;
+import physique.data.AcquisitionORMService;
 
 /**
  *
  * @author saturne
  */
-public class SignalServiceImpl implements SignalService {
+public class AcquisitionServiceImpl implements AcquisitionService {
 
-    SignalORMService signalSrv = physique.data.PhysiqueDataFactory.getSignalORMSrv();
+    AcquisitionORMService signalSrv = physique.data.PhysiqueDataFactory.getSignalORMSrv();
 
     @Override
-    public void addSignal(Signal signal) throws Exception {
-        if (signal != null) {
-            signalSrv.addSignal(signal);
+    public void addAcquisition(Acquisition acquisition) throws Exception {
+        if (acquisition != null) {
+            signalSrv.addAcquisition(acquisition);
         } else {
             throw new Exception("addSignal impossible : Paramètre null !");
         }
     }
 
     @Override
-    public void removeSignal(Signal signal) throws Exception {
-        if (signal != null) {
-            signalSrv.removeSignal(signal);
+    public void removeAcquisition(Acquisition acquisition) throws Exception {
+        if (acquisition != null) {
+            signalSrv.removeAcquisition(acquisition);
         } else {
             throw new Exception("removeSignal impossible : Paramètre null !");
         }
     }
 
     @Override
-    public void updateSignal(Signal signal) throws Exception {
-        if (signal != null) {
-            signalSrv.updateSignal(signal);
+    public void updateAcquisition(Acquisition acquisition) throws Exception {
+        if (acquisition != null) {
+            signalSrv.updateAcquisition(acquisition);
         } else {
             throw new Exception("updateSignal impossible : Paramètre null !");
         }
     }
 
     @Override
-    public List<Signal> getAll() throws Exception {
+    public List<Acquisition> getAll() throws Exception {
         return signalSrv.getAll();
     }
 
     @Override
-    public Signal getById(long id) throws Exception {
+    public Acquisition getById(long id) throws Exception {
         if(id < 0) {
             throw new Exception("getById impossible : id négatif !");
         } else {
@@ -58,7 +58,7 @@ public class SignalServiceImpl implements SignalService {
     }
 
     @Override
-    public List<Signal> getByDateAcquisition(Date dateAcquisition) throws Exception {
+    public List<Acquisition> getByDateAcquisition(Date dateAcquisition) throws Exception {
         if (dateAcquisition != null) {
             return signalSrv.getByDateAcquisition(dateAcquisition);
         } else {
@@ -67,7 +67,7 @@ public class SignalServiceImpl implements SignalService {
     }
 
     @Override
-    public List<Signal> getByPositionMontre(PositionMontre positionMontre) throws Exception {
+    public List<Acquisition> getByPositionMontre(PositionMontre positionMontre) throws Exception {
         if (positionMontre != null) {
             return signalSrv.getByPositionMontre(positionMontre);
         } else {

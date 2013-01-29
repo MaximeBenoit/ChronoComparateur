@@ -21,11 +21,11 @@ import javax.persistence.Temporal;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "signalGetAll", query = "SELECT s FROM Signal s"),
-    @NamedQuery(name = "signalGetByDateAcquisition", query = "SELECT s FROM Signal s WHERE s.dateAcquisition = :dateAcquisition"),
-    @NamedQuery(name = "signalGetByPositionMontre", query = "SELECT s FROM Signal s WHERE s.positionMontre = :positionMontre")
+    @NamedQuery(name = "acquisitionGetAll", query = "SELECT s FROM Acquisition s"),
+    @NamedQuery(name = "acquisitionGetByDateAcquisition", query = "SELECT s FROM Acquisition s WHERE s.dateAcquisition = :dateAcquisition"),
+    @NamedQuery(name = "acquisitionGetByPositionMontre", query = "SELECT s FROM Acquisition s WHERE s.positionMontre = :positionMontre")
 })
-public class Signal implements Serializable {
+public class Acquisition implements Serializable {
 
    private static final long serialVersionUID = 1L;
 
@@ -46,7 +46,7 @@ public class Signal implements Serializable {
     private PositionMontre positionMontre;
     
 
-    public Signal() {
+    public Acquisition() {
     }
 
     /**
@@ -146,7 +146,7 @@ public class Signal implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Signal other = (Signal) obj;
+        final Acquisition other = (Acquisition) obj;
         if (this.id != other.id) {
             return false;
         }

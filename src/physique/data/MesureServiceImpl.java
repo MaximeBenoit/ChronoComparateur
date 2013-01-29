@@ -5,7 +5,7 @@
 package physique.data;
 
 import metier.Mesure;
-import metier.Signal;
+import metier.Acquisition;
 
 /**
  *
@@ -17,7 +17,7 @@ class MesureServiceImpl implements MesureService {
     }
 
     @Override
-    public Mesure getMesure(Signal signal) {
+    public Mesure getMesure(Acquisition signal) {
         ConnexionService.getPersistance();
         Mesure mesure = ConnexionService.em.find(Mesure.class, signal);
         ConnexionService.disconect();

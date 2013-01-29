@@ -6,7 +6,7 @@
     <class>metier.Operateur</class>
     <class>metier.Montre</class>
     <class>metier.Rapport</class>
-    <class>metier.Signal</class>
+    <class>metier.Acquisition</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/chronocomp"/>
       <property name="javax.persistence.jdbc.password" value=""/>

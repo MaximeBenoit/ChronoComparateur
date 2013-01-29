@@ -9,5 +9,5 @@ package metier;
  * @author saturne
  */
 public interface MesureService {
-    public Mesure getMesure(Signal signal) throws Exception;
+    public Mesure getMesure(Acquisition signal) throws Exception;
 }

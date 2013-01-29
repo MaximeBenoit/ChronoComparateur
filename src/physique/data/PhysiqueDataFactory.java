@@ -11,7 +11,7 @@ package physique.data;
 public class PhysiqueDataFactory {
     
     private static OperateurORMService operateurORMSrv = new OperateurORMServiceImpl();
-    private static SignalORMService signalORMSrv = new SignalORMServiceImpl();
+    private static AcquisitionORMService signalORMSrv = new AcquisitionORMServiceImpl();
     private static ClientORMService clienORMSrv = new ClientORMServiceImpl();
     private static MontreORMService montreORMSrv = new MontreORMServiceImpl();
     private static RapportORMService rapportORMSrv = new RapportORMServiceImpl();
@@ -37,7 +37,7 @@ public class PhysiqueDataFactory {
     }
 
 
-    public static SignalORMService getSignalORMSrv() {
+    public static AcquisitionORMService getSignalORMSrv() {
         return signalORMSrv;
     }
 

@@ -5,12 +5,12 @@
 package physique.data;
 
 import metier.Mesure;
-import metier.Signal;
+import metier.Acquisition;
 
 /**
  *
  * @author benoit
  */
 public interface MesureService {
-    public Mesure getMesure(Signal signal)throws Exception;
+    public Mesure getMesure(Acquisition signal)throws Exception;
 }

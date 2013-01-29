@@ -17,7 +17,7 @@ public class MetierFactory {
     private static OperateurService operateurServ = new OperateurServiceImpl();
     private static ProprieteService proprieteServ = new ProprieteServiceImpl();
     private static RapportService rapportServ = new RapportServiceImpl();
-    private static SignalService signalServ = new SignalServiceImpl();
+    private static AcquisitionService signalServ = new AcquisitionServiceImpl();
 
     public static CarteSonService getCarteSonServ() {
         return carteSonServ;
@@ -47,7 +47,7 @@ public class MetierFactory {
         return rapportServ;
     }
 
-    public static SignalService getSignalServ() {
+    public static AcquisitionService getSignalServ() {
         return signalServ;
     }
 }

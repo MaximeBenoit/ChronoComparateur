@@ -21,7 +21,7 @@ public class InitialisationBdd {
     private OperateurService operateurSrv = MetierFactory.getOperateurServ();
     private MontreService montreSrv = MetierFactory.getMontreServ();
     private RapportService rapportSrv = MetierFactory.getRapportServ();
-    private SignalService signalSrv = MetierFactory.getSignalServ();
+    private AcquisitionService signalSrv = MetierFactory.getSignalServ();
 
     public InitialisationBdd() throws Exception {
 

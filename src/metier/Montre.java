@@ -41,7 +41,7 @@ public class Montre implements Serializable {
     @ManyToOne
     private Client proprietaire;
     @OneToMany
-    private List<Signal> signal;
+    private List<Acquisition> signal;
 
     public Montre() {
     }
@@ -51,7 +51,7 @@ public class Montre implements Serializable {
      *
      * @return the value of signal
      */
-    public List<Signal> getSignal() {
+    public List<Acquisition> getSignal() {
         return signal;
     }
 
@@ -60,7 +60,7 @@ public class Montre implements Serializable {
      *
      * @param signal new value of signal
      */
-    public void setSignal(List<Signal> signal) {
+    public void setSignal(List<Acquisition> signal) {
         this.signal = signal;
     }
 
