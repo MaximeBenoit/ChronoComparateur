@@ -44,16 +44,16 @@ public class InitialisationBdd {
 //        signal.setOperateur(operateur);
 //        signalSrv.addSignal(signal);
 //
-//        Montre montre = new Montre();
-//        montre.setFabricant("Rolex");
-//        montre.setProprietaire(client);
-//        montre.setSignal();
-//        montreSrv.addMontre(montre);
-//
-//        Rapport rapport = new Rapport();
-//        rapport.setDateUpdate(new Date());
-//        rapport.setMontre(montre);
-//        rapportSrv.addRapport(rapport);
+        Montre montre = new Montre();
+        montre.setFabricant("Rolex");
+        montre.setProprietaire(client);
+        montre.setAcquisition(null);
+        montreSrv.addMontre(montre);
+
+        Rapport rapport = new Rapport();
+        rapport.setDateUpdate(new Date());
+        rapport.setMontre(montre);
+        rapportSrv.addRapport(rapport);
 
     }
 }
