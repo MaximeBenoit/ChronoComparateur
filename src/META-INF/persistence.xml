@@ -4,12 +4,15 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>metier.Client</class>
     <class>metier.Operateur</class>
-    <validation-mode>NONE</validation-mode>
+    <class>metier.Montre</class>
+    <class>metier.Rapport</class>
+    <class>metier.Signal</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/chronocomp"/>
       <property name="javax.persistence.jdbc.password" value=""/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="eclipselink.ddl-generation" value="create-tables"/>
     </properties>
   </persistence-unit>
 </persistence>
