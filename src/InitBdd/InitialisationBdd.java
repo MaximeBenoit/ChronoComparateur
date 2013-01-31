@@ -49,11 +49,11 @@ public class InitialisationBdd {
         montre.setProprietaire(client);
         montre.setAcquisition(null);
         montreSrv.addMontre(montre);
-
+       
         Rapport rapport = new Rapport();
         rapport.setDateUpdate(new Date());
         rapport.setMontre(montre);
         rapportSrv.addRapport(rapport);
-
+        
     }
 }
