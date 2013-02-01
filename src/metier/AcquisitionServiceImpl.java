@@ -74,4 +74,13 @@ public class AcquisitionServiceImpl implements AcquisitionService {
             throw new Exception("getByPositionMontre impossible : Paramètre null !");
         }
     }
+
+    @Override
+    public Acquisition getByMontre(Montre montre) throws Exception {
+           if (montre != null) {
+            return signalSrv.getByMontre(montre);
+        } else {
+            throw new Exception("getByMontre impossible : Paramètre null !");
+        }
+    }
 }

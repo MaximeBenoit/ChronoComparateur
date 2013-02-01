@@ -9,5 +9,5 @@ package metier;
  * @author saturne
  */
 public interface CarteSonService {
-    public byte[] acquerir(double frequence, int nbPoints) throws Exception;
+    public byte[] acquerir(double frequence, int nbPoints) throws Exception;//
 }

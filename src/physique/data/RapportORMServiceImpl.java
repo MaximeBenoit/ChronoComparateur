@@ -69,8 +69,10 @@ class RapportORMServiceImpl implements RapportORMService {
     @Override
     public Rapport getByMontre(Montre montre) {
         ConnexionService.getPersistance();
-        Rapport rapport = ConnexionService.em.find(Rapport.class, montre);
+        Query query = ConnexionService.em.createNamedQuery("rapportGetByMontre");
+        query.setParameter("montre", montre);
+        Rapport acquisitions = (Rapport) query.getSingleResult();
         ConnexionService.disconect();
-        return rapport;
+        return acquisitions;
     }
 }

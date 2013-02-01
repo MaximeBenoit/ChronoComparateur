@@ -6,8 +6,9 @@ package physique.data;
 
 import java.util.Date;
 import java.util.List;
-import metier.PositionMontre;
 import metier.Acquisition;
+import metier.Montre;
+import metier.PositionMontre;
 
 /**
  *
@@ -21,4 +22,5 @@ public interface AcquisitionORMService {
     public Acquisition getById(long id) throws Exception;
     public List<Acquisition> getByDateAcquisition(Date dateAcquisition) throws Exception;
     public List<Acquisition> getByPositionMontre(PositionMontre positionMontre) throws Exception;
+    public Acquisition getByMontre(Montre montre)throws Exception;
 }

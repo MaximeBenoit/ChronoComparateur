@@ -47,7 +47,6 @@ public class InitialisationBdd {
         Montre montre = new Montre();
         montre.setFabricant("Rolex");
         montre.setProprietaire(client);
-        montre.setAcquisition(null);
         montreSrv.addMontre(montre);
        
         Rapport rapport = new Rapport();

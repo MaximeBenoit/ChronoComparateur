@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.Query;
 import metier.Acquisition;
+import metier.Montre;
 import metier.PositionMontre;
 
 /**
@@ -76,5 +77,15 @@ class AcquisitionORMServiceImpl implements AcquisitionORMService {
         List<Acquisition> signals = query.getResultList();
         ConnexionService.disconect();
         return signals;
+    }
+
+    @Override
+    public Acquisition getByMontre(Montre montre) throws Exception {
+        ConnexionService.getPersistance();
+        Query query = ConnexionService.em.createNamedQuery("acquisitionGetByMontre");
+        query.setParameter("montre", montre);
+        Acquisition acquisitions = (Acquisition) query.getSingleResult();
+        ConnexionService.disconect();
+        return acquisitions;
     }
 }

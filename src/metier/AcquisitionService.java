@@ -19,5 +19,6 @@ public interface AcquisitionService {
     public Acquisition getById(long id) throws Exception;
     public List<Acquisition> getByDateAcquisition(Date dateAcquisition) throws Exception;
     public List<Acquisition> getByPositionMontre(PositionMontre positionMontre) throws Exception;
+    public Acquisition getByMontre(Montre montre)throws Exception;
    
 }

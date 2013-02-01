@@ -22,7 +22,6 @@ import javax.persistence.OneToMany;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "montreGetAll", query = "SELECT m FROM Montre m"),
-    @NamedQuery(name = "getMontreByFabricant", query = "SELECT m FROM Montre m WHERE m.fabricant = :fabricant"),
     @NamedQuery(name = "getMontreByFabricant", query = "SELECT m FROM Montre m WHERE m.fabricant = :fabricant")
 })
 public class Montre implements Serializable {
@@ -41,28 +40,9 @@ public class Montre implements Serializable {
     private String fabricant;
     @ManyToOne
     private Client proprietaire;
-    @OneToMany
-    private List<Acquisition> acquisition;
+    
 
     public Montre() {
-    }
-
-    /**
-     * Get the value of signal
-     *
-     * @return the value of signal
-     */
-    public List<Acquisition> getAcquisition() {
-        return acquisition;
-    }
-
-    /**
-     * Set the value of signal
-     *
-     * @param signal new value of signal
-     */
-    public void setAcquisition(List<Acquisition> acquisition) {
-        this.acquisition = acquisition;
     }
 
     /**
@@ -125,7 +105,6 @@ public class Montre implements Serializable {
         hash = 79 * hash + (int) (this.id ^ (this.id >>> 32));
         hash = 79 * hash + (this.fabricant != null ? this.fabricant.hashCode() : 0);
         hash = 79 * hash + (this.proprietaire != null ? this.proprietaire.hashCode() : 0);
-        hash = 79 * hash + (this.acquisition != null ? this.acquisition.hashCode() : 0);
         return hash;
     }
 
