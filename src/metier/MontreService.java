@@ -11,7 +11,7 @@ import java.util.List;
  * @author saturne
  */
 public interface MontreService {
-    public void addMontre(Montre montre) throws Exception;
+    public Montre addMontre(Montre montre) throws Exception;
     public void removeMontre(Montre montre) throws Exception;
     public void updateMontre(Montre montre) throws Exception;
     public List<Montre> getAll() throws Exception;

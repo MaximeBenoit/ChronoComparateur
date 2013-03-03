@@ -13,7 +13,7 @@ import metier.Client;
  */
 public interface ClientORMService {
 
-    public void addClient(Client client) throws Exception;
+    public Client addClient(Client client) throws Exception;
 
     public void removeClient(Client client) throws Exception;
 

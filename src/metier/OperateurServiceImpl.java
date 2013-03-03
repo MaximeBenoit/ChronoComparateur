@@ -16,9 +16,9 @@ public class OperateurServiceImpl implements OperateurService {
     OperateurORMService operateurSrv = physique.data.PhysiqueDataFactory.getOperateurORMSrv();
 
     @Override
-    public void addOperateur(Operateur operateur) throws Exception {
+    public Operateur addOperateur(Operateur operateur) throws Exception {
         if (operateur != null) {
-            operateurSrv.addOperateur(operateur);
+            return operateurSrv.addOperateur(operateur);
         } else {
             throw new Exception("addOperateur impossible : Paramètre null !");
         }

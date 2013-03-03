@@ -19,10 +19,12 @@ class OperateurORMServiceImpl implements OperateurORMService {
     }
 
     @Override
-    public void addOperateur(Operateur operateur) {
+    public Operateur addOperateur(Operateur operateur) {
         ConnexionService.getPersistance();
         ConnexionService.em.persist(operateur);
+        ConnexionService.em.flush();
         ConnexionService.disconect();
+        return operateur;
     }
 
     @Override

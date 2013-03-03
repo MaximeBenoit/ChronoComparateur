@@ -16,9 +16,9 @@ public class MontreServiceImpl implements MontreService {
     MontreORMService montreSrv = physique.data.PhysiqueDataFactory.getMontreORMSrv();
 
     @Override
-    public void addMontre(Montre montre) throws Exception {
+    public Montre addMontre(Montre montre) throws Exception {
         if(montre != null) {
-            montreSrv.addMontre(montre);
+            return montreSrv.addMontre(montre);
         } else {
             throw new Exception("addMontre impossible : Paramètre null !");
         }

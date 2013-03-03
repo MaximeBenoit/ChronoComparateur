@@ -14,7 +14,7 @@ import metier.Montre;
  */
 public interface MontreORMService {
 
-    public void addMontre(Montre montre) throws Exception;
+    public Montre addMontre(Montre montre) throws Exception;
 
     public void removeMontre(Montre montre) throws Exception;
 

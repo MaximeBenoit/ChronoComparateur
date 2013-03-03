@@ -16,12 +16,15 @@ public class ClientServiceImpl implements ClientService {
     ClientORMService clientSrv = physique.data.PhysiqueDataFactory.getClienORMSrv();
 
     @Override
-    public void addClient(Client client) throws Exception {
+    public Client addClient(Client client) throws Exception {
         if(client != null) {
-            clientSrv.addClient(client);
+            return clientSrv.addClient(client);
         } else {
+            
             throw new Exception("addClient impossible : Paramètre null !");
+           
         }
+        
     }
 
     @Override

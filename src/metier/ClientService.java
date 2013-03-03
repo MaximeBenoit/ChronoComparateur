@@ -11,7 +11,7 @@ import java.util.List;
  * @author saturne
  */
 public interface ClientService {
-    public void addClient(Client client) throws Exception;
+    public Client addClient(Client client) throws Exception;
     public void removeClient(Client client) throws Exception;
     public void updateClient(Client client) throws Exception;
     public List<Client> getAll() throws Exception;

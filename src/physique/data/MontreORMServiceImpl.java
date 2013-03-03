@@ -19,10 +19,12 @@ class MontreORMServiceImpl implements MontreORMService {
     }
 
     @Override
-    public void addMontre(Montre montre) {
-         ConnexionService.getPersistance();
+    public Montre addMontre(Montre montre) {
+        ConnexionService.getPersistance();
         ConnexionService.em.persist(montre);
+        ConnexionService.em.flush();
         ConnexionService.disconect();
+        return montre;
     }
 
     @Override

@@ -13,7 +13,7 @@ import metier.Operateur;
  */
 public interface OperateurORMService {
 
-    public void addOperateur(Operateur operateur) throws Exception;
+    public Operateur addOperateur(Operateur operateur) throws Exception;
 
     public void removeOperateur(Operateur operateur) throws Exception;
 

@@ -11,7 +11,7 @@ import java.util.List;
  * @author saturne
  */
 public interface OperateurService {
-    public void addOperateur(Operateur operateur) throws Exception;
+    public Operateur addOperateur(Operateur operateur) throws Exception;
     public void removeOperateur(Operateur operateur) throws Exception;
     public void updateOperateur(Operateur operateur) throws Exception;
     public List<Operateur> getAll() throws Exception;

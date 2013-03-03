@@ -18,10 +18,12 @@ class ClientORMServiceImpl implements ClientORMService {
     }
 
     @Override
-    public void addClient(Client client) {
+    public Client addClient(Client client) {
         ConnexionService.getPersistance();
         ConnexionService.em.persist(client);
+        ConnexionService.em.flush();
         ConnexionService.disconect();
+        return client;
     }
 
     @Override
@@ -33,7 +35,7 @@ class ClientORMServiceImpl implements ClientORMService {
 
     @Override
     public void updateClient(Client client) {
-       ConnexionService.getPersistance();
+        ConnexionService.getPersistance();
         ConnexionService.em.merge(client);
         ConnexionService.disconect();
     }
@@ -43,7 +45,7 @@ class ClientORMServiceImpl implements ClientORMService {
         ConnexionService.getPersistance();
         Query query = ConnexionService.em.createNamedQuery("clientGetAll");
         List<Client> clients = query.getResultList();
-       ConnexionService.disconect();
+        ConnexionService.disconect();
         return clients;
     }
 
@@ -56,7 +58,7 @@ class ClientORMServiceImpl implements ClientORMService {
     }
 
     @Override
-    public List<Client>  getByNom(String nom) {
+    public List<Client> getByNom(String nom) {
         ConnexionService.getPersistance();
         Query query = ConnexionService.em.createNamedQuery("getClientByNom");
         query.setParameter("nom", nom);
@@ -66,8 +68,8 @@ class ClientORMServiceImpl implements ClientORMService {
     }
 
     @Override
-    public List<Client>  getByPrenom(String prenom) {
-       ConnexionService.getPersistance();
+    public List<Client> getByPrenom(String prenom) {
+        ConnexionService.getPersistance();
         Query query = ConnexionService.em.createNamedQuery("getClientByPrenom");
         query.setParameter("prenom", prenom);
         List<Client> client = query.getResultList();
