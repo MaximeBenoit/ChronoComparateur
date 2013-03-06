@@ -17,12 +17,13 @@ public class AcquisitionServiceImpl implements AcquisitionService {
     AcquisitionORMService signalSrv = physique.data.PhysiqueDataFactory.getSignalORMSrv();
 
     @Override
-    public void addAcquisition(Acquisition acquisition) throws Exception {
+    public Acquisition addAcquisition(Acquisition acquisition) throws Exception {
         if (acquisition != null) {
-            signalSrv.addAcquisition(acquisition);
+            return signalSrv.addAcquisition(acquisition);
         } else {
             throw new Exception("addSignal impossible : Paramètre null !");
         }
+        
     }
 
     @Override
@@ -67,7 +68,7 @@ public class AcquisitionServiceImpl implements AcquisitionService {
     }
 
     @Override
-    public List<Acquisition> getByPositionMontre(PositionMontre positionMontre) throws Exception {
+    public List<Acquisition> getByPositionMontre(String positionMontre) throws Exception {
         if (positionMontre != null) {
             return signalSrv.getByPositionMontre(positionMontre);
         } else {

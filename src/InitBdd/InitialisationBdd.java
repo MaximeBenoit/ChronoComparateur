@@ -21,7 +21,7 @@ public class InitialisationBdd {
     private OperateurService operateurSrv = MetierFactory.getOperateurServ();
     private MontreService montreSrv = MetierFactory.getMontreServ();
     private RapportService rapportSrv = MetierFactory.getRapportServ();
-    private AcquisitionService signalSrv = MetierFactory.getSignalServ();
+    private AcquisitionService acquisitionSrv = MetierFactory.getAcquisitionServ();
 
     public InitialisationBdd() throws Exception {
 
@@ -48,11 +48,11 @@ public class InitialisationBdd {
         montre.setFabricant("Rolex");
         montre.setProprietaire(client);
         montreSrv.addMontre(montre);
-       
+      
         Rapport rapport = new Rapport();
         rapport.setDateUpdate(new Date());
         rapport.setMontre(montre);
         rapportSrv.addRapport(rapport);
-        
+       
     }
 }

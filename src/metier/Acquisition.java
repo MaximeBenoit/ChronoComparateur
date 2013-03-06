@@ -44,7 +44,7 @@ public class Acquisition implements Serializable {
     private Date dateAcquisition;
     @ManyToOne
     private Operateur operateur;
-    private PositionMontre positionMontre;
+    private String positionMontre;
     @ManyToOne
     private Montre montre;
 
@@ -64,7 +64,7 @@ public class Acquisition implements Serializable {
      *
      * @return the value of positionMontre
      */
-    public PositionMontre getPositionMontre() {
+    public String getPositionMontre() {
         return positionMontre;
     }
 
@@ -73,7 +73,7 @@ public class Acquisition implements Serializable {
      *
      * @param positionMontre new value of positionMontre
      */
-    public void setPositionMontre(PositionMontre positionMontre) {
+    public void setPositionMontre(String positionMontre) {
         this.positionMontre = positionMontre;
     }
 

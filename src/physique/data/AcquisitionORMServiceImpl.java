@@ -9,7 +9,7 @@ import java.util.List;
 import javax.persistence.Query;
 import metier.Acquisition;
 import metier.Montre;
-import metier.PositionMontre;
+
 
 /**
  *
@@ -21,10 +21,12 @@ class AcquisitionORMServiceImpl implements AcquisitionORMService {
     }
 
     @Override
-    public void addAcquisition(Acquisition acquisition) throws Exception {
+    public Acquisition addAcquisition(Acquisition acquisition) throws Exception {
         ConnexionService.getPersistance();
         ConnexionService.em.persist(acquisition);
+        ConnexionService.em.flush();
         ConnexionService.disconect();
+        return acquisition;
     }
 
     @Override
@@ -70,7 +72,7 @@ class AcquisitionORMServiceImpl implements AcquisitionORMService {
     }
 
     @Override
-    public List<Acquisition> getByPositionMontre(PositionMontre positionMontre) throws Exception {
+    public List<Acquisition> getByPositionMontre(String positionMontre) throws Exception {
         ConnexionService.getPersistance();
         Query query = ConnexionService.em.createNamedQuery("acquisitionGetByPositionMontre");
         query.setParameter("positionMontre", positionMontre);
@@ -88,4 +90,6 @@ class AcquisitionORMServiceImpl implements AcquisitionORMService {
         ConnexionService.disconect();
         return acquisitions;
     }
+
+   
 }
