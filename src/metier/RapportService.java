@@ -12,7 +12,7 @@ import java.util.List;
  * @author saturne
  */
 public interface RapportService {
-    public void addRapport(Rapport rapport) throws Exception;
+    public Rapport addRapport(Rapport rapport) throws Exception;
     public void removeRapport(Rapport rapport) throws Exception;
     public void updateRapport(Rapport rapport) throws Exception;
     public List<Rapport> getAll() throws Exception;

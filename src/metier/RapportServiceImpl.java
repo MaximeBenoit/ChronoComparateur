@@ -16,12 +16,13 @@ public class RapportServiceImpl implements RapportService {
     RapportORMService rapportSrv = physique.data.PhysiqueDataFactory.getRapportORMSrv();
 
     @Override
-    public void addRapport(Rapport rapport) throws Exception {
+    public Rapport addRapport(Rapport rapport) throws Exception {
         if(rapport != null) {
-            rapportSrv.addRapport(rapport);
+           return rapportSrv.addRapport(rapport);
         } else {
             throw new Exception("addRapport impossible : Paramètre null !");
         }
+        
     }
 
     @Override

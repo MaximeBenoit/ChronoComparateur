@@ -14,7 +14,7 @@ import metier.Rapport;
  * @author benoit
  */
 public interface RapportORMService {
-    public void addRapport(Rapport rapport) throws Exception;
+    public Rapport addRapport(Rapport rapport) throws Exception;
 
     public void removeRapport(Rapport rapport) throws Exception;
 

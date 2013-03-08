@@ -6,7 +6,10 @@ package metier;
 
 import java.util.Date;
 import java.util.Hashtable;
-import org.apache.xmlrpc.WebServer;
+import org.apache.xmlrpc.server.PropertyHandlerMapping;
+import org.apache.xmlrpc.server.XmlRpcServer;
+import org.apache.xmlrpc.server.XmlRpcServerConfigImpl;
+import org.apache.xmlrpc.webserver.WebServer;
 
 /**
  *
@@ -134,20 +137,28 @@ public class ServeurXMLRPC {
         return ht;
     }
 
-//    public Hashtable addRapport(String idMontre) throws Exception {
-//        Date date = new Date();
-//        Hashtable ret = new Hashtable();
-//        Montre montre = new Montre();
-//        Rapport rapport = new Rapport();
-//        
-//          montre = this.montreSrv.getById(Long.parseLong(idMontre));
-//          if(montre !=null){
-//              rapport.setDateUpdate(date);
-//              rapport.setMontre(montre);
-//              Rapport retRapport = this.rapportSrv.addRapport(rapport);
-//          }
-//          
-//    }
+    public Hashtable addRapport(String idMontre) throws Exception {
+        Date date = new Date();
+        Hashtable ht = new Hashtable();
+        Montre montre = new Montre();
+        Rapport rapport = new Rapport();
+
+        montre = this.montreSrv.getById(Long.parseLong(idMontre));
+        if (montre != null) {
+            rapport.setDateUpdate(date);
+            rapport.setMontre(montre);
+            Rapport retRapport = this.rapportSrv.addRapport(rapport);
+            if (retRapport != null) {
+                ht.put("resultat", true);
+                ht.put("idAcquisition", retRapport.getId());
+            } else {
+                ht.put("resultat", false);
+            }
+        } else {
+            ht.put("resultat", false);
+        }
+        return ht;
+    }
 
     public Hashtable getEcho(String param) {
         System.out.println("Passage getEcho(), params : " + param);
@@ -156,13 +167,28 @@ public class ServeurXMLRPC {
         return ret;
     }
 
+    public Client getClient() {
+        System.out.println("Passage getClient()");
+        Client client = new Client();
+        client.setId(2034);
+        client.setNom("test");
+        client.setPrenom("test");
+        return client;
+    }
+
     public static void main(String[] args) {
         try {
             ServeurXMLRPC srv = new ServeurXMLRPC();
-            WebServer webserver = new WebServer(srv.port);
-            webserver.addHandler("service", srv); // enregistre le service
+            WebServer webServer = new WebServer(srv.port);
+            XmlRpcServer xmlRpcServer = webServer.getXmlRpcServer();
+            PropertyHandlerMapping phm = new PropertyHandlerMapping();
+            phm.addHandler("service", ServeurXMLRPC.class);
             // ajouter ici le gestionnaire système (voir plus loin)
-            webserver.start(); // démarre le serveur web
+            xmlRpcServer.setHandlerMapping(phm);
+            XmlRpcServerConfigImpl serverConfig = (XmlRpcServerConfigImpl) xmlRpcServer.getConfig();
+            serverConfig.setEnabledForExtensions(true);
+            serverConfig.setContentLengthOptional(false);
+            webServer.start(); // démarre le serveur web
             System.out.println("Serveur XML-RPC actif sur le port " + srv.port);
         } catch (Exception exception) {
             System.err.println("Serveur XML-RPC: " + exception.toString());
