@@ -179,16 +179,19 @@ public class ServeurXMLRPC {
     public static void main(String[] args) {
         try {
             ServeurXMLRPC srv = new ServeurXMLRPC();
-            WebServer webServer = new WebServer(srv.port);
+            
+            WebServer webServer = new WebServer(srv.port);              //Création serveur XML-RPC
             XmlRpcServer xmlRpcServer = webServer.getXmlRpcServer();
-            PropertyHandlerMapping phm = new PropertyHandlerMapping();
-            phm.addHandler("service", ServeurXMLRPC.class);
-            // ajouter ici le gestionnaire système (voir plus loin)
-            xmlRpcServer.setHandlerMapping(phm);
-            XmlRpcServerConfigImpl serverConfig = (XmlRpcServerConfigImpl) xmlRpcServer.getConfig();
-            serverConfig.setEnabledForExtensions(true);
+            
+            PropertyHandlerMapping phm = new PropertyHandlerMapping();  
+            phm.addHandler("service", ServeurXMLRPC.class);             //Associer serveur au service
+            xmlRpcServer.setHandlerMapping(phm);                        //Ajouter ici le gestionnaire système
+            
+            XmlRpcServerConfigImpl serverConfig = (XmlRpcServerConfigImpl) xmlRpcServer.getConfig();  
+            serverConfig.setEnabledForExtensions(true);                 //Configuration
             serverConfig.setContentLengthOptional(false);
-            webServer.start(); // démarre le serveur web
+            
+            webServer.start();                                          //Démarre le serveur web
             System.out.println("Serveur XML-RPC actif sur le port " + srv.port);
         } catch (Exception exception) {
             System.err.println("Serveur XML-RPC: " + exception.toString());
