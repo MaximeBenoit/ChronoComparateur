@@ -66,13 +66,13 @@ public class RapportServiceImpl implements RapportService {
         }
     }
 
-    @Override
-    public Rapport getByMontre(Montre montre) throws Exception {
-        if(montre != null) {
-            return rapportSrv.getByMontre(montre);
-        } else {
-            throw new Exception("getByMontre impossible : Paramètre null !");
-        }
-    }
+//    @Override
+//    public Rapport getByMontre(Montre montre) throws Exception {
+//        if(montre != null) {
+//            return rapportSrv.getByMontre(montre);
+//        } else {
+//            throw new Exception("getByMontre impossible : Paramètre null !");
+//        }
+//    }
     
 }

@@ -6,6 +6,8 @@ package metier;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
 /**
@@ -36,35 +39,34 @@ public class Rapport implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    private boolean isEmpty;
     
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dateUpdate;
-    @ManyToOne
-    private Montre montre;
+    @OneToMany(mappedBy = "rapport",cascade= CascadeType.REMOVE)
+    private List<Acquisition> acquisitions;
 
     
     public Rapport() {
     }
 
-    /**
-     * Get the value of montre
-     *
-     * @return the value of montre
-     */
-    public Montre getMontre() {
-        return montre;
+    public List<Acquisition> getAcquisition() {
+        return acquisitions;
     }
 
-    /**
-     * Set the value of montre
-     *
-     * @param montre new value of montre
-     */
-    public void setMontre(Montre montre) {
-        this.montre = montre;
+    public void setAcquisition(List<Acquisition> acquisitions) {
+        this.acquisitions = acquisitions;
     }
 
+    public boolean isEmpty() {
+        return isEmpty;
+    }
 
+    public void setEmpty(boolean isEmpty) {
+        this.isEmpty = isEmpty;
+    }
+
+    
     /**
      * Get the value of dateUpdate
      *
@@ -107,7 +109,7 @@ public class Rapport implements Serializable{
         int hash = 3;
         hash = 83 * hash + (int) (this.id ^ (this.id >>> 32));
         hash = 83 * hash + (this.dateUpdate != null ? this.dateUpdate.hashCode() : 0);
-        hash = 83 * hash + (this.montre != null ? this.montre.hashCode() : 0);
+        hash = 83 * hash + (this.acquisitions != null ? this.acquisitions.hashCode() : 0);
         return hash;
     }
 
@@ -128,6 +130,6 @@ public class Rapport implements Serializable{
 
     @Override
     public String toString() {
-        return ("Id : " + this.id + ", dateUpdate : " + this.dateUpdate + ", montre : " + this.montre.toString());
+        return ("Id : " + this.id + ", dateUpdate : " + this.dateUpdate + ", montre : " + this.acquisitions.toString());
     }
 }

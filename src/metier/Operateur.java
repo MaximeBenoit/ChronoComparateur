@@ -5,6 +5,7 @@
 package metier;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,6 +39,7 @@ public class Operateur implements Serializable {
     private long id;
     private String nom;
     private String prenom;
+    @Column(unique=true)
     private String login;
     private String mdp;
     private boolean isAdmin;

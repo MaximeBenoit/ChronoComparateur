@@ -14,7 +14,7 @@ import physique.data.AcquisitionORMService;
  */
 public class AcquisitionServiceImpl implements AcquisitionService {
 
-    AcquisitionORMService signalSrv = physique.data.PhysiqueDataFactory.getSignalORMSrv();
+    AcquisitionORMService signalSrv = physique.data.PhysiqueDataFactory.getAcquisitionORMSrv();
 
     @Override
     public Acquisition addAcquisition(Acquisition acquisition) throws Exception {

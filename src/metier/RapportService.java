@@ -18,5 +18,4 @@ public interface RapportService {
     public List<Rapport> getAll() throws Exception;
     public Rapport getById(long id) throws Exception;
     public List<Rapport> getByDateUpdate(Date dateUpdate) throws Exception;
-    public Rapport getByMontre(Montre montre) throws Exception;
 }

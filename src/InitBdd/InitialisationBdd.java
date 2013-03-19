@@ -4,6 +4,7 @@
  */
 package InitBdd;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import metier.*;
@@ -14,6 +15,7 @@ import metier.*;
  */
 public class InitialisationBdd {
 
+    short tabpoints[];
     /**
      * @param args the command line arguments
      */
@@ -24,20 +26,24 @@ public class InitialisationBdd {
     private AcquisitionService acquisitionSrv = MetierFactory.getAcquisitionServ();
 
     public InitialisationBdd() throws Exception {
-
+        Operateur operateur = null;
         Client client = new Client();
-        client.setNom("Benoit");
-        client.setPrenom("Maxime");
+        client.setNom("Chesneau ");
+        client.setPrenom("Damien");
         clientSrv.addClient(client);
 
-        Operateur operateur = new Operateur();
-        operateur.setAdmin(true);
-        operateur.setLogin("maximebenoit");
-        operateur.setMdp("0107");
-        operateur.setNom("Benoit");
-        operateur.setPrenom("Maxime");
-        operateurSrv.addOperateur(operateur);
-
+        for (int i = 0; i < 15; i++) {
+            operateur = new Operateur();
+            String login = "mBenoit" + i;
+            String nom = "Benoit" + i;
+            String prenom = "Maxime" + i;
+            operateur.setAdmin(true);
+            operateur.setLogin(login);
+            operateur.setMdp("0107");
+            operateur.setNom(nom);
+            operateur.setPrenom(prenom);
+            operateurSrv.addOperateur(operateur);
+        }
 //        Signal signal = new Signal();
 //        signal.setDateAcquisition(new Date());
 //        signal.setPositionMontre(PositionMontre.fondH);
@@ -48,11 +54,21 @@ public class InitialisationBdd {
         montre.setFabricant("Rolex");
         montre.setProprietaire(client);
         montreSrv.addMontre(montre);
-      
+
+        Acquisition acquisition = new Acquisition();
+        acquisition.setOperateur(operateur);
+        acquisition.setPositionMontre("init");
+        acquisition.setTabpoints(tabpoints);
+        acquisition.setDateAcquisition(new Date());
+        acquisitionSrv.addAcquisition(acquisition);
+
+        List<Acquisition> acquisitions = new ArrayList<Acquisition>();
+        acquisitions.add(acquisition);
         Rapport rapport = new Rapport();
         rapport.setDateUpdate(new Date());
-        rapport.setMontre(montre);
+        rapport.setAcquisition(acquisitions);
+        rapport.setEmpty(true);
         rapportSrv.addRapport(rapport);
-       
+
     }
 }

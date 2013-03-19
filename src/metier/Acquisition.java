@@ -6,6 +6,7 @@ package metier;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,11 +25,12 @@ import javax.persistence.Temporal;
     @NamedQuery(name = "acquisitionGetAll", query = "SELECT s FROM Acquisition s"),
     @NamedQuery(name = "acquisitionGetByDateAcquisition", query = "SELECT s FROM Acquisition s WHERE s.dateAcquisition = :dateAcquisition"),
     @NamedQuery(name = "acquisitionGetByPositionMontre", query = "SELECT s FROM Acquisition s WHERE s.positionMontre = :positionMontre"),
-    @NamedQuery(name = "acquisitionGetByMontre", query = "SELECT s FROM Acquisition s WHERE s.montre = :montre")
 })
 public class Acquisition implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    @ManyToOne
+    private Rapport rapport;
 
     /**
      * @return the serialVersionUID
@@ -45,18 +47,11 @@ public class Acquisition implements Serializable {
     @ManyToOne
     private Operateur operateur;
     private String positionMontre;
-    @ManyToOne
-    private Montre montre;
+
+    
+    
 
     public Acquisition() {
-    }
-
-    public Montre getMontre() {
-        return montre;
-    }
-
-    public void setMontre(Montre montre) {
-        this.montre = montre;
     }
 
     /**
@@ -145,7 +140,6 @@ public class Acquisition implements Serializable {
         hash = 11 * hash + (int) (this.id ^ (this.id >>> 32));
         hash = 11 * hash + (this.dateAcquisition != null ? this.dateAcquisition.hashCode() : 0);
         hash = 11 * hash + (this.operateur != null ? this.operateur.hashCode() : 0);
-        hash = 11 * hash + (this.montre != null ? this.montre.hashCode() : 0);
         return hash;
     }
 

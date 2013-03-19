@@ -10,7 +10,6 @@ import javax.persistence.Query;
 import metier.Acquisition;
 import metier.Montre;
 
-
 /**
  *
  * @author benoit
@@ -90,6 +89,4 @@ class AcquisitionORMServiceImpl implements AcquisitionORMService {
         ConnexionService.disconect();
         return acquisitions;
     }
-
-   
 }

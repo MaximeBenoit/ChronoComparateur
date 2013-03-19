@@ -26,5 +26,5 @@ public interface RapportORMService {
 
     public List<Rapport> getByDateUpdate(Date dateUpdate) throws Exception;
 
-    public Rapport getByMontre(Montre montre) throws Exception;
+  //  public Rapport getByMontre(Montre montre) throws Exception;
 }

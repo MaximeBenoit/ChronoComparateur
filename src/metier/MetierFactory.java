@@ -18,7 +18,7 @@ public class MetierFactory {
     private static ProprieteService proprieteServ = new ProprieteServiceImpl();
     private static RapportService rapportServ = new RapportServiceImpl();
     private static AcquisitionService acquisitionServ = new AcquisitionServiceImpl();
-
+    private static RequetesService requeteSrv = new RequetesServiceImpl();
     public static CarteSonService getCarteSonServ() {
         return carteSonServ;
     }
@@ -50,4 +50,9 @@ public class MetierFactory {
     public static AcquisitionService getAcquisitionServ() {
         return acquisitionServ;
     }
+
+    public static RequetesService getRequeteSrv() {
+        return requeteSrv;
+    }
+    
 }
