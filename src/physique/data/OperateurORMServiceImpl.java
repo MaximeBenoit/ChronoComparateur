@@ -22,7 +22,7 @@ class OperateurORMServiceImpl implements OperateurORMService {
     public Operateur addOperateur(Operateur operateur) {
         ConnexionService.getPersistance();
         ConnexionService.em.persist(operateur);
-        ConnexionService.em.flush();
+//        ConnexionService.em.flush();
         ConnexionService.disconect();
         return operateur;
     }
@@ -85,10 +85,16 @@ class OperateurORMServiceImpl implements OperateurORMService {
 
     @Override
     public Operateur getByLogin(String login) {
+        System.out.println(login);
         ConnexionService.getPersistance();
         Query query = ConnexionService.em.createNamedQuery("getByLogin");
         query.setParameter("login", login);
-        Operateur operateurs = (Operateur) query.getSingleResult();
+        Operateur operateurs;
+        try {
+            operateurs = (Operateur) query.getSingleResult();
+        } catch (NoResultException e) {
+            operateurs = null;
+        }
         ConnexionService.disconect();
         return operateurs;
     }

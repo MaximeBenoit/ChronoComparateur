@@ -4,6 +4,7 @@
  */
 package metier;
 
+import java.util.Hashtable;
 import physique.data.PhysiqueDataFactory;
 import physique.data.XMLRPCService;
 
@@ -17,7 +18,8 @@ public class RequetesServiceImpl implements RequetesService{
     public RequetesServiceImpl() {
     }
 
-    public Client addClient(String nom, String prenom) throws Exception {
+    @Override
+    public Hashtable addClient(String nom, String prenom) throws Exception {
         if(nom == null || prenom == null) {
             System.out.println("Erreur addClient, paramètre null");
             return null;
@@ -26,8 +28,8 @@ public class RequetesServiceImpl implements RequetesService{
         }
     }
 
-    public Montre addMontre(String fabricant, long idClient) throws Exception {
-        if(fabricant == null || idClient <= 0) {
+    public Hashtable addMontre(String fabricant, String idClient) throws Exception {
+        if(fabricant == null || idClient == null) {
             System.out.println("Erreur addMontre, paramètre null");
             return null;
         } else {
@@ -35,8 +37,8 @@ public class RequetesServiceImpl implements RequetesService{
         }
     }
 
-    public Acquisition addAcquisition(short[] tabPts, long idOperateur, String posMontre) throws Exception {
-        if(tabPts == null || idOperateur <= 0 || posMontre == null) {
+    public Hashtable addAcquisition(Double[] tabPts, String idOperateur, String posMontre) throws Exception {
+        if(tabPts == null || idOperateur == null || posMontre == null) {
             System.out.println("Erreur addAcquisition, paramètre null");
             return null;
         } else {
@@ -44,8 +46,8 @@ public class RequetesServiceImpl implements RequetesService{
         }
     }
 
-    public Client getClientById(long idClient) throws Exception {
-        if(idClient <= 0) {
+    public Hashtable getClientById(String idClient) throws Exception {
+        if(idClient == null) {
             System.out.println("Erreur getClientById, paramètre <= 0");
             return null;
         } else {
@@ -53,8 +55,8 @@ public class RequetesServiceImpl implements RequetesService{
         }
     }
 
-    public Montre getMontreById(long idMontre) throws Exception {
-        if(idMontre <= 0) {
+    public Hashtable getMontreById(String idMontre) throws Exception {
+        if(idMontre == null) {
             System.out.println("Erreur getMontreById, paramètre <= 0");
             return null;
         } else {
@@ -62,7 +64,8 @@ public class RequetesServiceImpl implements RequetesService{
         }
     }
 
-    public Operateur getOperateurByLogin(String login) throws Exception {
+    @Override
+    public Hashtable getOperateurByLogin(String login) throws Exception {
         if(login == null) {
             System.out.println("Erreur getOperateurByLogin, paramètre null");
             return null;
@@ -72,8 +75,8 @@ public class RequetesServiceImpl implements RequetesService{
     }
 
     @Override
-    public void updateRapport(long idRapport, long idAcquisition) throws Exception {
-        if(idRapport <= 0 || idAcquisition <= 0) {
+    public void updateRapport(String idRapport, String idAcquisition) throws Exception {
+        if(idRapport == null || idAcquisition == null) {
             System.out.println("Erreur updateRapport, paramètre null");
         } else {
             xmlRpcService.updateRapport(idRapport, idAcquisition);

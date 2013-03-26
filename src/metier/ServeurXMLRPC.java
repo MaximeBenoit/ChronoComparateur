@@ -4,10 +4,9 @@
  */
 package metier;
 
-import org.apache.xmlrpc.server.PropertyHandlerMapping;
-import org.apache.xmlrpc.server.XmlRpcServer;
-import org.apache.xmlrpc.server.XmlRpcServerConfigImpl;
-import org.apache.xmlrpc.webserver.WebServer;
+import java.util.Hashtable;
+import org.apache.xmlrpc.WebServer;
+
 
 /**
  *
@@ -25,50 +24,42 @@ public class ServeurXMLRPC {
         this.port = port;
     }
 
-    public Client addClient(String nom, String prenom) throws Exception {
+    public Hashtable addClient(String nom, String prenom) throws Exception {
         return this.requetesSrv.addClient(nom, prenom);
     }
 
-    public Montre addMontre(String fabricant, long idClient) throws Exception {
+    public Hashtable addMontre(String fabricant, String idClient) throws Exception {
         return this.requetesSrv.addMontre(fabricant, idClient);
     }
 
-    public Acquisition addAcquisition(short[] tabPts, long idOperateur, String posMontre) throws Exception {
+    public Hashtable addAcquisition(Double[] tabPts, String idOperateur, String posMontre) throws Exception {
         return this.requetesSrv.addAcquisition(tabPts, idOperateur, posMontre);
     }
 
-    public Client getClientById(long idClient) throws Exception {
+    public Hashtable getClientById(String idClient) throws Exception {
         return this.requetesSrv.getClientById(idClient);
     }
 
-    public Montre getMontreById(long idMontre) throws Exception {
+    public Hashtable getMontreById(String idMontre) throws Exception {
         return this.requetesSrv.getMontreById(idMontre);
     }
 
-    public Operateur getOperateurByLogin(String login) throws Exception {
+    public Hashtable getOperateurByLogin(String login) throws Exception {
+        System.out.println("Passage getOperateurByLogin, param : " + login);
         return this.requetesSrv.getOperateurByLogin(login);
     }
     
-    public void updateRapport(long idRapport, long idAcquisition) throws Exception {
+    public void updateRapport(String idRapport, String idAcquisition) throws Exception {
         this.requetesSrv.updateRapport(idRapport, idAcquisition);
     }
 
     public static void main(String[] args) {
         try {
             ServeurXMLRPC srv = new ServeurXMLRPC();
-            
-            WebServer webServer = new WebServer(srv.port);              //Création serveur XML-RPC
-            XmlRpcServer xmlRpcServer = webServer.getXmlRpcServer();
-            
-            PropertyHandlerMapping phm = new PropertyHandlerMapping();  
-            phm.addHandler("service", ServeurXMLRPC.class);             //Associer serveur au service
-            xmlRpcServer.setHandlerMapping(phm);                        //Ajouter ici le gestionnaire système
-            
-            XmlRpcServerConfigImpl serverConfig = (XmlRpcServerConfigImpl) xmlRpcServer.getConfig();  
-            serverConfig.setEnabledForExtensions(true);                 //Configuration
-            serverConfig.setContentLengthOptional(false);
-            
-            webServer.start();                                          //Démarre le serveur web
+            WebServer webserver = new WebServer(srv.port);
+            webserver.addHandler("service", srv); // enregistre le service
+            // ajouter ici le gestionnaire système (voir plus loin)
+            webserver.start(); // démarre le serveur web
             System.out.println("Serveur XML-RPC actif sur le port " + srv.port);
         } catch (Exception exception) {
             System.err.println("Serveur XML-RPC: " + exception.toString());

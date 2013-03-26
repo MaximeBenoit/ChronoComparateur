@@ -15,7 +15,7 @@ import metier.*;
  */
 public class InitialisationBdd {
 
-    short tabpoints[];
+    Double[] tabpoints;
     /**
      * @param args the command line arguments
      */
@@ -32,11 +32,11 @@ public class InitialisationBdd {
         client.setPrenom("Damien");
         clientSrv.addClient(client);
 
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < 32; i++) {
             operateur = new Operateur();
-            String login = "mBenoit" + i;
-            String nom = "Benoit" + i;
-            String prenom = "Maxime" + i;
+            String login = "login" + i;
+            String nom = "nom" + i;
+            String prenom = "prenom" + i;
             operateur.setAdmin(true);
             operateur.setLogin(login);
             operateur.setMdp("0107");
@@ -50,10 +50,7 @@ public class InitialisationBdd {
 //        signal.setOperateur(operateur);
 //        signalSrv.addSignal(signal);
 //
-        Montre montre = new Montre();
-        montre.setFabricant("Rolex");
-        montre.setProprietaire(client);
-        montreSrv.addMontre(montre);
+       
 
         Acquisition acquisition = new Acquisition();
         acquisition.setOperateur(operateur);
@@ -70,5 +67,10 @@ public class InitialisationBdd {
         rapport.setEmpty(true);
         rapportSrv.addRapport(rapport);
 
+         Montre montre = new Montre();
+        montre.setFabricant("Rolex");
+        montre.setProprietaire(client);
+        montre.setRapport(rapport);
+        montreSrv.addMontre(montre);
     }
 }

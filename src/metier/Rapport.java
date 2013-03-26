@@ -12,7 +12,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -43,11 +42,11 @@ public class Rapport implements Serializable{
     
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dateUpdate;
-    @OneToMany(mappedBy = "rapport",cascade= CascadeType.REMOVE)
+    @OneToMany(cascade= CascadeType.REMOVE)
     private List<Acquisition> acquisitions;
-
     
     public Rapport() {
+        
     }
 
     public List<Acquisition> getAcquisition() {
@@ -130,6 +129,6 @@ public class Rapport implements Serializable{
 
     @Override
     public String toString() {
-        return ("Id : " + this.id + ", dateUpdate : " + this.dateUpdate + ", montre : " + this.acquisitions.toString());
+        return ("Id : " + this.id + ", dateUpdate : " + this.dateUpdate);
     }
 }

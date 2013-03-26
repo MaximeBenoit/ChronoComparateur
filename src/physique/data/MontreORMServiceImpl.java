@@ -22,7 +22,7 @@ class MontreORMServiceImpl implements MontreORMService {
     public Montre addMontre(Montre montre) {
         ConnexionService.getPersistance();
         ConnexionService.em.persist(montre);
-        ConnexionService.em.flush();
+//        ConnexionService.em.flush();
         ConnexionService.disconect();
         return montre;
     }
@@ -44,7 +44,7 @@ class MontreORMServiceImpl implements MontreORMService {
     @Override
     public List<Montre> getAll() throws Exception {
         ConnexionService.getPersistance();
-        Query query = ConnexionService.em.createNamedQuery("montretGetAll");
+        Query query = ConnexionService.em.createNamedQuery("montreGetAll");
         List<Montre> montres = query.getResultList();
        ConnexionService.disconect();
         return montres;
@@ -52,7 +52,7 @@ class MontreORMServiceImpl implements MontreORMService {
 
     @Override
     public Montre getById(long id) {
-         ConnexionService.getPersistance();
+        ConnexionService.getPersistance();
         Montre montre = ConnexionService.em.find(Montre.class, id);
         ConnexionService.disconect();
         return montre;

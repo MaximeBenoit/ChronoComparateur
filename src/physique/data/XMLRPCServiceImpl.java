@@ -6,6 +6,7 @@ package physique.data;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Hashtable;
 import java.util.List;
 import metier.Acquisition;
 import metier.Client;
@@ -26,16 +27,21 @@ public class XMLRPCServiceImpl implements XMLRPCService {
     OperateurORMService operateurSrv = PhysiqueDataFactory.getOperateurORMSrv();
 
     @Override
-    public Client addClient(String nom, String prenom) throws Exception {
+    public Hashtable addClient(String nom, String prenom) throws Exception {
+        Hashtable ht = new Hashtable();
+        System.out.println("Method addClient, params : " + nom + ", " + prenom);
         Client clientCreate = new Client();
         clientCreate.setNom(nom);
         clientCreate.setPrenom(prenom);
         Client clientAdd = this.clientSrv.addClient(clientCreate);
-        return clientAdd;
+        ht.put("idClient", String.valueOf(clientAdd.getId()));
+        return ht;
     }
 
     @Override
-    public Montre addMontre(String fabricant, long idClient) throws Exception {
+    public Hashtable addMontre(String fabricant, String idClient) throws Exception {
+        Hashtable ht = new Hashtable();
+        System.out.println("\nMethod addMontre, params : " + fabricant + ", " + idClient + "\n");
         Rapport rapportCreate = new Rapport();
         Montre montreCreate = new Montre();
 
@@ -44,46 +50,72 @@ public class XMLRPCServiceImpl implements XMLRPCService {
         rapportCreate.setAcquisition(null);
 
         montreCreate.setFabricant(fabricant);
-        montreCreate.setRapport(rapportCreate);
+        montreCreate.setRapport(this.rapportSrv.addRapport(rapportCreate));
+        montreCreate.setProprietaire(this.clientSrv.getById(Long.parseLong(idClient)));
 
         Montre montreAdd = this.montreSrv.addMontre(montreCreate);
-        return montreAdd;
+        ht.put("idMontre", String.valueOf(montreAdd.getId()));
+        return ht;
     }
 
     @Override
-    public Acquisition addAcquisition(short[] tabPts, long idOperateur, String posMontre) throws Exception {
+    public Hashtable addAcquisition(Double[] tabPts, String idOperateur, String posMontre) throws Exception {
+        Hashtable ht = new Hashtable();
+        System.out.println("Method addAcquisition, params : " + tabPts + ", " + idOperateur+ ", " +posMontre);
         Acquisition acquisitionCreate = new Acquisition();
         acquisitionCreate.setDateAcquisition(new Date());
-        acquisitionCreate.setOperateur(this.operateurSrv.getById(idOperateur));
+        acquisitionCreate.setOperateur(this.operateurSrv.getById(Long.parseLong(idOperateur)));
         acquisitionCreate.setPositionMontre(posMontre);
         acquisitionCreate.setTabpoints(tabPts);
         Acquisition acquisitionAdd = this.acquisitionSrv.addAcquisition(acquisitionCreate);
-        return acquisitionAdd;
+        ht.put("idAcquisition", String.valueOf(acquisitionAdd.getId()));
+        return ht;
     }
 
     @Override
-    public Client getClientById(long idClient) throws Exception {
-        Client client = this.clientSrv.getById(idClient);
-        return client;
-
+    public Hashtable getClientById(String idClient) throws Exception {
+        Hashtable ht = new Hashtable();
+        Client client = this.clientSrv.getById(Long.parseLong(idClient));
+        if(client == null) {
+            ht.put("idClient", String.valueOf(0));
+        } else {
+            ht.put("idClient", String.valueOf(client.getId()));
+        }
+        return ht;
     }
 
     @Override
-    public Montre getMontreById(long idMontre) throws Exception {
-        Montre montre = this.montreSrv.getById(idMontre);
-        return montre;
+    public Hashtable getMontreById(String idMontre) throws Exception {
+        Hashtable ht = new Hashtable();
+        Montre montre = this.montreSrv.getById(Long.parseLong(idMontre));
+        if(montre == null) {
+            ht.put("idMontre", String.valueOf(0));
+        } else {
+            ht.put("idMontre", String.valueOf(montre.getId()));
+        }
+        return ht;
     }
 
     @Override
-    public Operateur getOperateurByLogin(String login) throws Exception {
-        Operateur operateur = this.operateurSrv.getByLogin(login);
-        return operateur;
+    public Hashtable getOperateurByLogin(String login) throws Exception {
+        Hashtable ht = new Hashtable();
+        System.out.println("Passage getByLogin, param : " + login);
+        Operateur operateur = new Operateur();
+        operateur = this.operateurSrv.getByLogin(login);
+        if(operateur == null) {
+            System.out.println("PASSAGEnull");
+           ht.put("idOperateur", String.valueOf(0));
+        } else {
+            System.out.println("PASSAGE");
+           ht.put("idOperateur", String.valueOf(operateur.getId()));
+        }
+        return ht;
     }
 
     @Override
-    public void updateRapport(long idRapport, long idAcquisition) throws Exception {
-        Rapport rapportRecup = this.rapportSrv.getById(idRapport);
-        Acquisition acquisitionRecup = this.acquisitionSrv.getById(idAcquisition);
+    public void updateRapport(String idRapport, String idAcquisition) throws Exception {
+        Rapport rapportRecup = this.rapportSrv.getById(Long.parseLong(idRapport));
+        Acquisition acquisitionRecup = this.acquisitionSrv.getById(Long.parseLong(idAcquisition));
         List<Acquisition> acquisitions = new ArrayList<Acquisition>();
 
         if (rapportRecup.isEmpty()) {
@@ -96,7 +128,7 @@ public class XMLRPCServiceImpl implements XMLRPCService {
         Rapport rapportUpdate = new Rapport();
         rapportUpdate.setAcquisition(acquisitions);
         rapportUpdate.setDateUpdate(acquisitionRecup.getDateAcquisition());
-        rapportUpdate.setId(idRapport);
+        rapportUpdate.setId(Long.parseLong(idRapport));
         rapportUpdate.setEmpty(false);
         this.rapportSrv.updateRapport(rapportUpdate);
     }

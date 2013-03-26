@@ -5,6 +5,11 @@
 package InitBdd;
 
 import metier.MetierFactory;
+import metier.OperateurService;
+import metier.RequetesService;
+import metier.ServeurXMLRPC;
+import physique.data.OperateurORMService;
+import physique.data.PhysiqueDataFactory;
 
 /**
  *
@@ -15,6 +20,10 @@ public class Chronocomp {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws Exception {
+        
+//        ServeurXMLRPC t = new ServeurXMLRPC();
+//        System.out.println(t.getOperateurByLogin("test").get("idOperateur"));
+        
         
         InitialisationBdd initialisationBdd = new InitialisationBdd();
 //        if (MetierFactory.getClientServ().getAll().isEmpty()) {

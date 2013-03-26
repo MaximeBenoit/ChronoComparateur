@@ -29,8 +29,6 @@ import javax.persistence.Temporal;
 public class Acquisition implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @ManyToOne
-    private Rapport rapport;
 
     /**
      * @return the serialVersionUID
@@ -41,7 +39,7 @@ public class Acquisition implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private short[] tabpoints;
+    private Double[] tabpoints;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dateAcquisition;
     @ManyToOne
@@ -126,11 +124,11 @@ public class Acquisition implements Serializable {
         this.id = id;
     }
 
-    public short[] getTabpoints() {
+    public Double[] getTabpoints() {
         return tabpoints;
     }
 
-    public void setTabpoints(short[] tabpoints) {
+    public void setTabpoints(Double[] tabpoints) {
         this.tabpoints = tabpoints;
     }
 
