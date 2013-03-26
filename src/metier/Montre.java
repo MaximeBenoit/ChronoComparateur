@@ -5,7 +5,7 @@
 package metier;
 
 import java.io.Serializable;
-import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 
 /**
  *
@@ -41,10 +40,22 @@ public class Montre implements Serializable {
     @ManyToOne
     private Client proprietaire;
     
+    @ManyToOne(cascade= CascadeType.REMOVE)
+    private Rapport rapport;
+    
 
     public Montre() {
     }
 
+    public Rapport getRapport() {
+        return rapport;
+    }
+
+    public void setRapport(Rapport rapport) {
+        this.rapport = rapport;
+    }
+
+    
     /**
      * Get the value of proprietaire
      *

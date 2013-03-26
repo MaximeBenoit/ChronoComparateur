@@ -20,10 +20,11 @@ class RapportORMServiceImpl implements RapportORMService {
     }
 
     @Override
-    public void addRapport(Rapport rapport) {
+    public Rapport addRapport(Rapport rapport) {
         ConnexionService.getPersistance();
         ConnexionService.em.persist(rapport);
         ConnexionService.disconect();
+        return rapport;
     }
 
     @Override
@@ -66,13 +67,13 @@ class RapportORMServiceImpl implements RapportORMService {
         return rapports;
     }
 
-    @Override
-    public Rapport getByMontre(Montre montre) {
-        ConnexionService.getPersistance();
-        Query query = ConnexionService.em.createNamedQuery("rapportGetByMontre");
-        query.setParameter("montre", montre);
-        Rapport acquisitions = (Rapport) query.getSingleResult();
-        ConnexionService.disconect();
-        return acquisitions;
-    }
+//    @Override
+//    public Rapport getByMontre(Montre montre) {
+//        ConnexionService.getPersistance();
+//        Query query = ConnexionService.em.createNamedQuery("rapportGetByMontre");
+//        query.setParameter("montre", montre);
+//        Rapport acquisitions = (Rapport) query.getSingleResult();
+//        ConnexionService.disconect();
+//        return acquisitions;
+//    }
 }
