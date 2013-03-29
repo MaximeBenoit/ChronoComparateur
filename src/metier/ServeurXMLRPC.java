@@ -32,7 +32,24 @@ public class ServeurXMLRPC {
         return this.requetesSrv.addMontre(fabricant, idClient);
     }
 
-    public Hashtable addAcquisition(Double[] tabPts, String idOperateur, String posMontre) throws Exception {
+    public Hashtable addAcquisition(byte[] tabBytes, String idOperateur, String posMontre) throws Exception {
+        double[] tabDouble = new double[tabBytes.length / 2];
+        Double[] tabPts = new Double[tabDouble.length];
+        byte n1 = 0;
+        byte n2 =0; 
+        
+        // Cast tabBytes -> tabDouble
+        for(int i = 0,i2 = 0; i<tabDouble.length; i++){   
+            n1 = tabBytes[i2];
+            n2 = tabBytes[i2+1];
+            i2 = i2+2;
+            tabDouble[i] = (n1 & 0xFF) | (n2<<8);
+        }
+        
+        for(int i = 0; i < tabDouble.length; i++) {
+            tabPts[i] = new Double(tabDouble[i]);
+        }
+        
         return this.requetesSrv.addAcquisition(tabPts, idOperateur, posMontre);
     }
 
