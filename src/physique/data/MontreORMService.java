@@ -30,4 +30,6 @@ public interface MontreORMService {
     public List<Montre> getByProprietaire(Client proprietaire) throws Exception;
     
     public Montre getByRapport(Rapport rapport)throws Exception;
+    
+    public List<Montre> getByProprietaire(Client proprietaire,int index,int nb) throws Exception;
 }
