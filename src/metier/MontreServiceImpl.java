@@ -9,7 +9,7 @@ import physique.data.MontreORMService;
 
 /**
  *
- * @author saturne
+ * @author maxime
  */
 public class MontreServiceImpl implements MontreService {
 
@@ -62,6 +62,24 @@ public class MontreServiceImpl implements MontreService {
             return montreSrv.getByFabricant(fabricant);
         } else {
             throw new Exception("getByFabricant impossible : Paramètre null !");
+        }
+    }
+
+    @Override
+    public List<Montre> getByProprietaire(Client proprietaire) throws Exception {
+         if(proprietaire != null) {
+            return montreSrv.getByProprietaire(proprietaire);
+        } else {
+            throw new Exception("getByProprietaire impossible : Paramètre null !");
+        }
+    }
+
+    @Override
+    public Montre getByRapport(Rapport rapport) throws Exception {
+        if(rapport != null) {
+            return montreSrv.getByRapport(rapport);
+        } else {
+            throw new Exception("getByRapport impossible : Paramètre null !");
         }
     }
 }

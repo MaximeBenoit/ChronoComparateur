@@ -7,6 +7,7 @@ package physique.data;
 import java.util.List;
 import metier.Client;
 import metier.Montre;
+import metier.Rapport;
 
 /**
  *
@@ -27,4 +28,6 @@ public interface MontreORMService {
     public List<Montre> getByFabricant(String fabricant) throws Exception;
     
     public List<Montre> getByProprietaire(Client proprietaire) throws Exception;
+    
+    public Montre getByRapport(Rapport rapport)throws Exception;
 }

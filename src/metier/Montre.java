@@ -16,12 +16,14 @@ import javax.persistence.NamedQuery;
 
 /**
  *
- * @author saturne
+ * @author maxime
  */
 @Entity
 @NamedQueries({
     @NamedQuery(name = "montreGetAll", query = "SELECT m FROM Montre m"),
-    @NamedQuery(name = "getMontreByFabricant", query = "SELECT m FROM Montre m WHERE m.fabricant = :fabricant")
+    @NamedQuery(name = "getMontreByFabricant", query = "SELECT m FROM Montre m WHERE m.fabricant = :fabricant"),
+    @NamedQuery(name = "getMontreByProprietaire", query = "SELECT m FROM Montre m WHERE m.proprietaire = :proprietaire"),
+    @NamedQuery(name = "getMontreByRapport", query = "SELECT m FROM Montre m WHERE m.rapport = :rapport")
 })
 public class Montre implements Serializable {
 

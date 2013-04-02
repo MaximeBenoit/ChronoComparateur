@@ -17,4 +17,6 @@ public interface MontreService {
     public List<Montre> getAll() throws Exception;
     public Montre getById(long id) throws Exception;
     public List<Montre> getByFabricant(String fabricant) throws Exception;
+    public List<Montre> getByProprietaire(Client proprietaire) throws Exception;
+    public Montre getByRapport(Rapport rapport)throws Exception;
 }

@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.Query;
 import metier.Client;
 import metier.Montre;
+import metier.Rapport;
 
 /**
  *
@@ -29,7 +30,7 @@ class MontreORMServiceImpl implements MontreORMService {
 
     @Override
     public void removeMontre(Montre montre) {
-         ConnexionService.getPersistance();
+        ConnexionService.getPersistance();
         ConnexionService.em.remove(ConnexionService.em.merge(montre));
         ConnexionService.disconect();
     }
@@ -46,7 +47,7 @@ class MontreORMServiceImpl implements MontreORMService {
         ConnexionService.getPersistance();
         Query query = ConnexionService.em.createNamedQuery("montreGetAll");
         List<Montre> montres = query.getResultList();
-       ConnexionService.disconect();
+        ConnexionService.disconect();
         return montres;
     }
 
@@ -70,12 +71,21 @@ class MontreORMServiceImpl implements MontreORMService {
 
     @Override
     public List<Montre> getByProprietaire(Client proprietaire) throws Exception {
-         ConnexionService.getPersistance();
+        ConnexionService.getPersistance();
         Query query = ConnexionService.em.createNamedQuery("getMontreByProprietaire");
         query.setParameter("proprietaire", proprietaire);
         List<Montre> montre = query.getResultList();
         ConnexionService.disconect();
         return montre;
     }
-    
+
+    @Override
+    public Montre getByRapport(Rapport rapport) throws Exception {
+        ConnexionService.getPersistance();
+        Query query = ConnexionService.em.createNamedQuery("getMontreByRapport");
+        query.setParameter("rapport", rapport);
+        Montre montre = (Montre) query.getSingleResult();
+        ConnexionService.disconect();
+        return montre;
+    }
 }
