@@ -50,6 +50,16 @@ class MontreORMServiceImpl implements MontreORMService {
         ConnexionService.disconect();
         return montres;
     }
+    
+    @Override
+    public List<Montre> getAll(int index, int nb) throws Exception{
+       ConnexionService.getPersistance();
+        Query query = ConnexionService.em.createNamedQuery("montreGetAll");
+        query.setFirstResult(index).setMaxResults(nb);
+        List<Montre> montres = query.getResultList();
+        ConnexionService.disconect();
+        return montres;
+    }
 
     @Override
     public Montre getById(long id) {

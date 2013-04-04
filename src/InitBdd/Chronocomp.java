@@ -23,9 +23,13 @@ public class Chronocomp {
         
 //        ServeurXMLRPC t = new ServeurXMLRPC();
 //        System.out.println(t.getOperateurByLogin("test").get("idOperateur"));
+        ServeurXMLRPC s = new ServeurXMLRPC();
+        for(int i = 50; i < 100; i++) {
+            s.addMontre(String.valueOf(i), String.valueOf(1));
+        }
         
         
-        InitialisationBdd initialisationBdd = new InitialisationBdd();
+//        InitialisationBdd initialisationBdd = new InitialisationBdd();
 //        if (MetierFactory.getClientServ().getAll().isEmpty()) {
 //            InitialisationBdd initialisationBdd = new InitialisationBdd();
 //        } else {

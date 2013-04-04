@@ -22,6 +22,8 @@ public interface MontreORMService {
     public void updateMontre(Montre montre) throws Exception;
 
     public List<Montre> getAll() throws Exception;
+    
+    public List<Montre> getAll(int index, int nb) throws Exception;
 
     public Montre getById(long id) throws Exception;
 

@@ -82,4 +82,9 @@ public class MontreServiceImpl implements MontreService {
             throw new Exception("getByRapport impossible : Paramètre null !");
         }
     }
+
+    @Override
+    public List<Montre> getAll(int index, int nb) throws Exception {
+         return montreSrv.getAll(index, nb);
+    }
 }
