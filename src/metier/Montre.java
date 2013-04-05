@@ -23,7 +23,8 @@ import javax.persistence.NamedQuery;
     @NamedQuery(name = "montreGetAll", query = "SELECT m FROM Montre m"),
     @NamedQuery(name = "getMontreByFabricant", query = "SELECT m FROM Montre m WHERE m.fabricant = :fabricant"),
     @NamedQuery(name = "getMontreByProprietaire", query = "SELECT m FROM Montre m WHERE m.proprietaire = :proprietaire"),
-    @NamedQuery(name = "getMontreByRapport", query = "SELECT m FROM Montre m WHERE m.rapport = :rapport")
+    @NamedQuery(name = "getMontreByRapport", query = "SELECT m FROM Montre m WHERE m.rapport = :rapport"),
+    @NamedQuery(name = "count", query="SELECT COUNT(m) FROM Montre m")
 })
 public class Montre implements Serializable {
 

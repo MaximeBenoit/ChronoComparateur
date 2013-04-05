@@ -87,4 +87,9 @@ public class MontreServiceImpl implements MontreService {
     public List<Montre> getAll(int index, int nb) throws Exception {
          return montreSrv.getAll(index, nb);
     }
+
+    @Override
+    public long count() throws Exception {
+        return montreSrv.count();
+    }
 }

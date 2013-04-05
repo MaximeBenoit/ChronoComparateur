@@ -22,6 +22,8 @@ public interface MontreService {
 
     public List<Montre> getAll(int index, int nb) throws Exception;
 
+    public long count() throws Exception;
+
     public Montre getById(long id) throws Exception;
 
     public List<Montre> getByFabricant(String fabricant) throws Exception;

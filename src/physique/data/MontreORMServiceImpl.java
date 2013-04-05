@@ -88,6 +88,7 @@ class MontreORMServiceImpl implements MontreORMService {
         ConnexionService.disconect();
         return montre;
     }
+    @Override
     public List<Montre> getByProprietaire(Client proprietaire,int index,int nb) throws Exception {
         ConnexionService.getPersistance();
         Query query = ConnexionService.em.createNamedQuery("getMontreByProprietaire");
@@ -106,5 +107,14 @@ class MontreORMServiceImpl implements MontreORMService {
         Montre montre = (Montre) query.getSingleResult();
         ConnexionService.disconect();
         return montre;
+    }
+
+    @Override
+    public long count() throws Exception {
+        ConnexionService.getPersistance();
+        Query query = ConnexionService.em.createNamedQuery("count");
+        long nbElement = (long)query.getSingleResult();
+        ConnexionService.disconect();
+        return nbElement;
     }
 }
