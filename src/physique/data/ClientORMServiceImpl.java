@@ -21,7 +21,6 @@ class ClientORMServiceImpl implements ClientORMService {
     public Client addClient(Client client) {
         ConnexionService.getPersistance();
         ConnexionService.em.persist(client);
-//        ConnexionService.em.flush();
         ConnexionService.disconect();
         return client;
     }
