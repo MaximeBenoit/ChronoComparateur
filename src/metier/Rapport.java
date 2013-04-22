@@ -19,7 +19,7 @@ import javax.persistence.Temporal;
 
 /**
  *
- * @author saturne
+ * @author Maxime
  */
 @Entity
 @NamedQueries({
