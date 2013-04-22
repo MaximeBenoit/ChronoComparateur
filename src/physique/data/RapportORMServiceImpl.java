@@ -76,4 +76,13 @@ class RapportORMServiceImpl implements RapportORMService {
 //        ConnexionService.disconect();
 //        return acquisitions;
 //    }
+
+    @Override
+    public List<Rapport> getByDefaut(Rapport defaut) throws Exception {
+        ConnexionService.getPersistance();
+        Query query =ConnexionService.em.createNamedQuery("rapportGetByDefaut");
+        query.setParameter("defaut", defaut);
+        List<Rapport> rapports = query.getResultList();
+        return rapports;
+    }
 }

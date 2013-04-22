@@ -40,12 +40,16 @@ public class Acquisition implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private Double[] tabpoints;
+    private double variationDeMarche;
+    private double repere;
+    private int amplitude;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dateAcquisition;
     @ManyToOne
     private Operateur operateur;
     private String positionMontre;
-
+    
+    
     
     
 
@@ -132,6 +136,31 @@ public class Acquisition implements Serializable {
         this.tabpoints = tabpoints;
     }
 
+    public double getVariationDeMarche() {
+        return variationDeMarche;
+    }
+
+    public void setVariationDeMarche(double variationDeMarche) {
+        this.variationDeMarche = variationDeMarche;
+    }
+
+    public double getRepere() {
+        return repere;
+    }
+
+    public void setRepere(double repere) {
+        this.repere = repere;
+    }
+
+    public int getAmplitude() {
+        return amplitude;
+    }
+
+    public void setAmplitude(int amplitude) {
+        this.amplitude = amplitude;
+    }
+
+    
     @Override
     public int hashCode() {
         int hash = 7;

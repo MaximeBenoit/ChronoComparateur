@@ -20,5 +20,6 @@ public interface AcquisitionService {
     public List<Acquisition> getByDateAcquisition(Date dateAcquisition) throws Exception;
     public List<Acquisition> getByPositionMontre(String positionMontre) throws Exception;
     public Acquisition getByMontre(Montre montre)throws Exception;
+    
    
 }

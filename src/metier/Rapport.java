@@ -24,7 +24,8 @@ import javax.persistence.Temporal;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "rapportGetAll", query = "SELECT r FROM Rapport r"),
-    @NamedQuery(name = "rapportGetByDateUpdate", query = "SELECT r FROM Rapport r WHERE r.dateUpdate = :dateUpdate")
+    @NamedQuery(name = "rapportGetByDateUpdate", query = "SELECT r FROM Rapport r WHERE r.dateUpdate = :dateUpdate"),
+    @NamedQuery(name = "rapportGetByDefaut", query = "SELECT r FROM Rapport r WHERE r.defaut = :defaut")
 })
 public class Rapport implements Serializable{
     private static final long serialVersionUID = 1L;
@@ -39,7 +40,7 @@ public class Rapport implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private boolean isEmpty;
-    
+    private String defaut;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dateUpdate;
     @OneToMany(cascade= CascadeType.REMOVE)
@@ -82,6 +83,14 @@ public class Rapport implements Serializable{
      */
     public void setDateUpdate(Date dateUpdate) {
         this.dateUpdate = dateUpdate;
+    }
+
+    public String getDefaut() {
+        return defaut;
+    }
+
+    public void setDefaut(String defaut) {
+        this.defaut = defaut;
     }
 
 

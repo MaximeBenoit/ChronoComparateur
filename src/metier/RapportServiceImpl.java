@@ -74,5 +74,15 @@ public class RapportServiceImpl implements RapportService {
 //            throw new Exception("getByMontre impossible : Paramètre null !");
 //        }
 //    }
+
+    @Override
+    public List<Rapport> getByDefaut(Rapport defaut) throws Exception {
+        if (defaut != null) {
+            return rapportSrv.getByDefaut(defaut);
+        } else {
+            throw new Exception("getByDefaut impossible : Paramètre null !");
+        }
+    }
+    
     
 }
