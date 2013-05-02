@@ -37,12 +37,12 @@ public class RequetesServiceImpl implements RequetesService{
         }
     }
 
-    public Hashtable addAcquisition(Double[] tabPts, String idOperateur, String posMontre) throws Exception {
+    public Hashtable addAcquisition(Double[] tabPts, String idOperateur, String posMontre, String variationDeMarche, String repere, String amplitude) throws Exception {
         if(tabPts == null || idOperateur == null || posMontre == null) {
             System.out.println("Erreur addAcquisition, paramètre null");
             return null;
         } else {
-            return xmlRpcService.addAcquisition(tabPts, idOperateur, posMontre);
+            return xmlRpcService.addAcquisition(tabPts, idOperateur, posMontre, variationDeMarche, repere, amplitude);
         }
     }
 
@@ -75,11 +75,21 @@ public class RequetesServiceImpl implements RequetesService{
     }
 
     @Override
-    public void updateRapport(String idRapport, String idAcquisition) throws Exception {
+    public void updateRapport(String idRapport, String idAcquisition, String defaut) throws Exception {
         if(idRapport == null || idAcquisition == null) {
             System.out.println("Erreur updateRapport, paramètre null");
         } else {
-            xmlRpcService.updateRapport(idRapport, idAcquisition);
+            xmlRpcService.updateRapport(idRapport, idAcquisition, defaut);
+        }
+    }
+
+    @Override
+    public Hashtable getRapportByMontre(String idMontre) throws Exception {
+        if(idMontre == null) {
+            System.out.println("Erreur getRapportByMontre, paramètre null");
+            return null;
+        } else {
+             return xmlRpcService.getRapportByMontre(idMontre);
         }
     }
 }

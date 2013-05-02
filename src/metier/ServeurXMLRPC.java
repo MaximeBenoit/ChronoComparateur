@@ -32,7 +32,7 @@ public class ServeurXMLRPC {
         return this.requetesSrv.addMontre(fabricant, idClient);
     }
 
-    public Hashtable addAcquisition(byte[] tabBytes, String idOperateur, String posMontre) throws Exception {
+    public Hashtable addAcquisition(byte[] tabBytes, String idOperateur, String posMontre, String variationDeMarche, String repere, String amplitude) throws Exception {
         double[] tabDouble = new double[tabBytes.length / 2];
         Double[] tabPts = new Double[tabDouble.length];
         byte n1 = 0;
@@ -50,7 +50,7 @@ public class ServeurXMLRPC {
             tabPts[i] = new Double(tabDouble[i]);
         }
         
-        return this.requetesSrv.addAcquisition(tabPts, idOperateur, posMontre);
+        return this.requetesSrv.addAcquisition(tabPts, idOperateur, posMontre, variationDeMarche, repere, amplitude);
     }
 
     public Hashtable getClientById(String idClient) throws Exception {
@@ -66,8 +66,13 @@ public class ServeurXMLRPC {
         return this.requetesSrv.getOperateurByLogin(login);
     }
     
-    public void updateRapport(String idRapport, String idAcquisition) throws Exception {
-        this.requetesSrv.updateRapport(idRapport, idAcquisition);
+    public Hashtable getRapportByMontre(String idMontre) throws Exception {
+        System.out.println("Passage getRapportByMontre, param : " + idMontre);
+        return this.requetesSrv.getRapportByMontre(idMontre);
+    }
+    
+    public void updateRapport(String idRapport, String idAcquisition, String defaut) throws Exception {
+        this.requetesSrv.updateRapport(idRapport, idAcquisition, defaut);
     }
 
     public static void main(String[] args) {
