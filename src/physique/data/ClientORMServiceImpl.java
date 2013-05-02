@@ -20,8 +20,8 @@ class ClientORMServiceImpl implements ClientORMService {
     @Override
     public Client addClient(Client client) {
         ConnexionService.getPersistance();
-        ConnexionService.em.persist(client);
 //        ConnexionService.em.flush();
+        ConnexionService.em.persist(client);
         ConnexionService.disconect();
         return client;
     }
