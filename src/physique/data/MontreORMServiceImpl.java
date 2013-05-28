@@ -23,7 +23,7 @@ class MontreORMServiceImpl implements MontreORMService {
     public Montre addMontre(Montre montre) {
         ConnexionService.getPersistance();
         ConnexionService.em.persist(montre);
-//        ConnexionService.em.flush();
+        ConnexionService.em.flush();// Mettre flush en com pour initialiser la BDD
         ConnexionService.disconect();
         return montre;
     }

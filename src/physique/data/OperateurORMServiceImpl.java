@@ -22,7 +22,7 @@ class OperateurORMServiceImpl implements OperateurORMService {
     public Operateur addOperateur(Operateur operateur) {
         ConnexionService.getPersistance();
         ConnexionService.em.persist(operateur);
-//        ConnexionService.em.flush();
+        ConnexionService.em.flush();// Mettre flush en com pour initialiser la BDD
         ConnexionService.disconect();
         return operateur;
     }

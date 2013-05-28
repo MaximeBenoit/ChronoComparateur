@@ -23,7 +23,7 @@ class AcquisitionORMServiceImpl implements AcquisitionORMService {
     public Acquisition addAcquisition(Acquisition acquisition) throws Exception {
         ConnexionService.getPersistance();
         ConnexionService.em.persist(acquisition);
-//        ConnexionService.em.flush();
+        ConnexionService.em.flush();// Mettre flush en com pour initialiser la BDD
         ConnexionService.disconect();
         return acquisition;
     }

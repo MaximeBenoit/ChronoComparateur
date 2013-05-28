@@ -11,7 +11,7 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author benoit
+ * @author maxime
  */
 public class ConnexionService {
     

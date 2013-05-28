@@ -20,7 +20,7 @@ class ClientORMServiceImpl implements ClientORMService {
     @Override
     public Client addClient(Client client) {
         ConnexionService.getPersistance();
-//        ConnexionService.em.flush();
+        ConnexionService.em.flush();// Mettre flush en com pour initialiser la BDD
         ConnexionService.em.persist(client);
         ConnexionService.disconect();
         return client;
