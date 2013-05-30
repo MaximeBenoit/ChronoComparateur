@@ -29,7 +29,7 @@ public class Chronocomp {
 //        }
         
         
-        //InitialisationBdd initialisationBdd = new InitialisationBdd();
+//        InitialisationBdd initialisationBdd = new InitialisationBdd();
 //        if (MetierFactory.getClientServ().getAll().isEmpty()) {
 //            InitialisationBdd initialisationBdd = new InitialisationBdd();
 //        } else {

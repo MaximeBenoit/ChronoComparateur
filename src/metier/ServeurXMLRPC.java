@@ -25,14 +25,25 @@ public class ServeurXMLRPC {
     }
 
     public Hashtable addClient(String nom, String prenom) throws Exception {
-        return this.requetesSrv.addClient(nom, prenom);
+        Hashtable ht = new Hashtable();
+        ht = this.requetesSrv.addClient(nom, prenom);
+        System.err.println("\n====================\nServeur XML-RPC\nMéthode addClient :\n\tNom => " 
+                + nom + "\n\tPrenom => " + prenom + "\n\tValeur retournée => " 
+                + ht.get("idClient") + "\n=====================\n");
+        return ht;
     }
 
     public Hashtable addMontre(String fabricant, String idClient) throws Exception {
-        return this.requetesSrv.addMontre(fabricant, idClient);
+        Hashtable ht = new Hashtable();
+        ht = this.requetesSrv.addMontre(fabricant, idClient);
+        System.err.println("\n====================\nServeur XML-RPC \nMéthode addMontre :\n\tFabricant => " 
+                + fabricant + "\n\tClient => " + idClient + "\n\tValeur retournée => " 
+                + ht.get("idMontre") + "\n=====================\n");
+        return ht;
     }
 
     public Hashtable addAcquisition(byte[] tabBytes, String idOperateur, String posMontre, String variationDeMarche, String repere, String amplitude) throws Exception {
+        Hashtable ht = new Hashtable();
         double[] tabDouble = new double[tabBytes.length / 2];
         Double[] tabPts = new Double[tabDouble.length];
         byte n1 = 0;
@@ -49,29 +60,52 @@ public class ServeurXMLRPC {
         for(int i = 0; i < tabDouble.length; i++) {
             tabPts[i] = new Double(tabDouble[i]);
         }
-        
-        return this.requetesSrv.addAcquisition(tabPts, idOperateur, posMontre, variationDeMarche, repere, amplitude);
+        ht = this.requetesSrv.addAcquisition(tabPts, idOperateur, posMontre, variationDeMarche, repere, amplitude);
+        System.err.println("\n=====================\nServeur XML-RPC \nMéthode addAcquisition :\n\tOperateur => " 
+                + idOperateur + "\n\tPosition montre => " + posMontre + "\n\tVariation de marche =>  " + variationDeMarche +"\n\tRepere =>  " + repere +"\n\tAmplitude =>  " + amplitude +"\n\tValeur retournée => " 
+                + ht.get("idAcquisition") + "\n=====================\n");
+        return ht;
     }
-
+    
     public Hashtable getClientById(String idClient) throws Exception {
-        return this.requetesSrv.getClientById(idClient);
+        Hashtable ht = new Hashtable();
+        ht=this.requetesSrv.getClientById(idClient);
+         System.err.println("\n=====================\nServeur XML-RPC \nMéthode getClientById :\n\tClient => " 
+                + idClient + "\n\tValeur retournée => " 
+                + ht.get("idClient") + "\n=====================\n");
+        return ht;
     }
 
     public Hashtable getMontreById(String idMontre) throws Exception {
-        return this.requetesSrv.getMontreById(idMontre);
+        Hashtable ht = new Hashtable();
+        ht = this.requetesSrv.getMontreById(idMontre);
+        System.err.println("\n=====================\nServeur XML-RPC \nMéthode getMontreById :\n\tMontre => " 
+                + idMontre + "\n\tValeur retournée => " 
+                + ht.get("idMontre") + "\n=====================\n");
+        return ht;
     }
 
     public Hashtable getOperateurByLogin(String login) throws Exception {
-        System.out.println("Passage getOperateurByLogin, param : " + login);
-        return this.requetesSrv.getOperateurByLogin(login);
+         Hashtable ht = new Hashtable();
+         ht = this.requetesSrv.getOperateurByLogin(login);
+          System.err.println("\n=====================\nServeur XML-RPC \nMéthode getOperateurByLogin :\n\tLogin => " 
+                + login + "\n\tValeur retournée => " 
+                + ht.get("idOperateur") + "\n=====================\n");
+        return ht;
     }
     
     public Hashtable getRapportByMontre(String idMontre) throws Exception {
-        System.out.println("Passage getRapportByMontre, param : " + idMontre);
-        return this.requetesSrv.getRapportByMontre(idMontre);
+        Hashtable ht = new Hashtable();
+        ht = this.requetesSrv.getRapportByMontre(idMontre);
+         System.err.println("\n=====================\nServeur XML-RPC \nMéthode getRapportByMontre :\n\tMontre => " 
+                + idMontre + "\nValeur retournée => " 
+                + ht.get("idRapport") + "\n=====================\n");
+        return ht;
     }
     
     public void updateRapport(String idRapport, String idAcquisition, String defaut) throws Exception {
+        System.err.println("\n=====================\nServeur XML-RPC :\nMéthode updateRapport :\n\tRapport => " 
+                + idRapport + "\n\tAcquisition => " + idAcquisition + "\n\tDefaut =>  " + defaut + "\n=====================\n");
         this.requetesSrv.updateRapport(idRapport, idAcquisition, defaut);
     }
 
